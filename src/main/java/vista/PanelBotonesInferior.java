@@ -38,15 +38,12 @@ public class PanelBotonesInferior extends JPanel implements ActionListener {
         this.add(this.botonAgregarPuntoReciclaje);
     }
 
-    private void inicializarComponente2() {
-
-    }
-
     @Override
     public void actionPerformed(ActionEvent evento) {
         if (this.botonIniciarSesion == evento.getSource()) {
             this.botonAgregarAdministrador.setVisible(true);
             this.botonAgregarPuntoReciclaje.setVisible(true);
+            this.botonIniciarSesion.setVisible(false);
         }
     }
 
