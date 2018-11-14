@@ -3,13 +3,11 @@ package modelo;
 import datos.Archivo;
 import java.util.ArrayList;
 import java.util.List;
-import modelo.API;
-import modelo.PuntoReciclaje;
 
 public class Mapa {
 
-    private ArrayList<API> api = new ArrayList<API>(); //PENDIENTE IMPLEMENTACION
-    private ArrayList<PuntoReciclaje> puntosReciclaje = new ArrayList<PuntoReciclaje>();
+    private ArrayList<API> api = new ArrayList<>(); //PENDIENTE IMPLEMENTACION
+    private ArrayList<PuntoReciclaje> puntosReciclaje = new ArrayList<>();
 
     public Mapa() {
         cargarMapa();
