@@ -10,5 +10,13 @@ package vista;
  * @author Daniel
  */
 public class VentanaBusquedaPersonalizada {
+
+    public VentanaBusquedaPersonalizada() {
+        iniciarComponente();
+    }
+
+    private void iniciarComponente() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

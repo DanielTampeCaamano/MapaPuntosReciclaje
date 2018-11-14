@@ -10,5 +10,13 @@ package vista;
  * @author Daniel
  */
 public class VentanaMapa {
+
+    public VentanaMapa() {
+        iniciarComponente();
+    }
+
+    private void iniciarComponente() {
+
+    }
     
 }

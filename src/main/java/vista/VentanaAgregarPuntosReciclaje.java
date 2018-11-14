@@ -10,5 +10,13 @@ package vista;
  * @author Daniel
  */
 public class VentanaAgregarPuntosReciclaje {
+
+    public VentanaAgregarPuntosReciclaje() {
+        iniciarComponente();
+    }
+
+    private void iniciarComponente() {
+
+    }
     
 }

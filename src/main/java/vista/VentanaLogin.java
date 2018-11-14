@@ -10,5 +10,13 @@ package vista;
  * @author Daniel
  */
 public class VentanaLogin {
+
+    public VentanaLogin() {
+        iniciarComponente();
+    }
     
+    private void iniciarComponente(){
+    
+    
+    }
 }

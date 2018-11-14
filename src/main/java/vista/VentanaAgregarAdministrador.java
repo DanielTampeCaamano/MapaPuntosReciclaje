@@ -10,5 +10,13 @@ package vista;
  * @author Daniel
  */
 public class VentanaAgregarAdministrador {
+
+    public VentanaAgregarAdministrador() {
+        inciarComponente();
+    }
+        
+    private void inciarComponente(){
     
+    
+    }
 }
