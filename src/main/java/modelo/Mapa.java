@@ -83,7 +83,7 @@ public class Mapa {
         return coincidenciasPuntosReciclaje;
     }
     public ArrayList<PuntoReciclaje> buscarPuntosReciclajeMedianteCategoria(String categoria) {
-        ArrayList<PuntoReciclaje> coincidenciasPuntosReciclaje = null;
+        ArrayList<PuntoReciclaje> coincidenciasPuntosReciclaje = new ArrayList<>();
         for (int i = 0; i < this.puntosReciclaje.size(); i++) {
             if (this.puntosReciclaje.get(i).toString().contains(categoria)) {
                 coincidenciasPuntosReciclaje.add(this.puntosReciclaje.get(i));
