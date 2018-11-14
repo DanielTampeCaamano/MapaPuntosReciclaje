@@ -5,17 +5,26 @@
  */
 package vista;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+
 /**
  *
  * @author Daniel
  */
-public class VentanaResultadosBusqueda {
+public class VentanaResultadosBusqueda extends JFrame implements ActionListener{
 
     public VentanaResultadosBusqueda() {
         iniciarComponente();
     }
 
     private void iniciarComponente() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

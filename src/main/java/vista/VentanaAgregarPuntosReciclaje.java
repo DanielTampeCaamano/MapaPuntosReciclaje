@@ -5,11 +5,15 @@
  */
 package vista;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+
 /**
  *
  * @author Daniel
  */
-public class VentanaAgregarPuntosReciclaje {
+public class VentanaAgregarPuntosReciclaje extends JFrame implements ActionListener{
 
     public VentanaAgregarPuntosReciclaje() {
         iniciarComponente();
@@ -17,6 +21,11 @@ public class VentanaAgregarPuntosReciclaje {
 
     private void iniciarComponente() {
 
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

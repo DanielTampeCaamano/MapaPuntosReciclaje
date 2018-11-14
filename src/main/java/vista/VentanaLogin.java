@@ -5,11 +5,15 @@
  */
 package vista;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+
 /**
  *
  * @author Daniel
  */
-public class VentanaLogin {
+public class VentanaLogin extends JFrame implements ActionListener{
 
     public VentanaLogin() {
         iniciarComponente();
@@ -18,5 +22,10 @@ public class VentanaLogin {
     private void iniciarComponente(){
     
     
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

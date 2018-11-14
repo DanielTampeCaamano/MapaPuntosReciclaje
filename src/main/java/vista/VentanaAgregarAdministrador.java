@@ -5,11 +5,15 @@
  */
 package vista;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+
 /**
  *
  * @author Daniel
  */
-public class VentanaAgregarAdministrador {
+public class VentanaAgregarAdministrador extends JFrame implements ActionListener{
 
     public VentanaAgregarAdministrador() {
         inciarComponente();
@@ -18,5 +22,9 @@ public class VentanaAgregarAdministrador {
     private void inciarComponente(){
     
     
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
     }
 }
