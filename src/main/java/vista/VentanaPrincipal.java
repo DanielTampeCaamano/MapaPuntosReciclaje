@@ -16,18 +16,22 @@ import javax.swing.JPanel;
 public class VentanaPrincipal extends JFrame{
     
     private PanelMenu panelMenu;
-    private PanelBoton panelBoton;
+    private PanelBuscar panelBuscar;
+    private PanelBotonesInferior panelBotonesInferior;
     public VentanaPrincipal() {
         inicializarCompontente();
     }
     
     private void inicializarCompontente(){
         this.panelMenu=new PanelMenu();
-        this.panelBoton=new PanelBoton();
-        this.add(panelMenu,BorderLayout.WEST);
-        this.add(this.panelBoton,BorderLayout.NORTH);
+        this.panelBuscar=new PanelBuscar();
+        this.panelBotonesInferior=new PanelBotonesInferior();
+        this.add(this.panelMenu,BorderLayout.WEST);
+        this.add(this.panelBuscar,BorderLayout.NORTH);
+        this.add(this.panelBotonesInferior,BorderLayout.SOUTH);
         
-        this.setSize(500, 500);
+        
+        this.setSize(600, 650);
         this.setTitle("MAPA DE PUNTOS DE RECICLAJE");
         this.setVisible(true);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);

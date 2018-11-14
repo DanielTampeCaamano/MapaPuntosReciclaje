@@ -15,14 +15,14 @@ import javax.swing.JPanel;
  *
  * @author Daniel
  */
-public class PanelBoton extends JPanel implements ActionListener{
+public class PanelBuscar extends JPanel implements ActionListener{
     JButton botonBuscar;
-    public PanelBoton() {
+    public PanelBuscar() {
         inicializarComponente();
     }
 
     private void inicializarComponente() {
-        botonBuscar=new JButton("Buscar\npunto de reciclaje");
+        botonBuscar=new JButton("Buscar punto de reciclaje");
         botonBuscar.addActionListener(this);
         this.add(this.botonBuscar);
     }
