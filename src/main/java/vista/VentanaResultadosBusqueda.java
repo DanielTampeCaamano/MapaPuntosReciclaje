@@ -18,7 +18,7 @@ public class VentanaResultadosBusqueda extends JFrame implements ActionListener{
     public VentanaResultadosBusqueda() {
         iniciarComponente();
     }
-
+    
     private void iniciarComponente() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

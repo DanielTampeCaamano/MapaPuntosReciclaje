@@ -17,18 +17,24 @@ import javax.swing.JPanel;
  */
 public class PanelBuscar extends JPanel implements ActionListener{
     JButton botonBuscar;
+    VentanaBusquedaPersonalizada ventanaBusquedaPersonalizada;
     public PanelBuscar() {
         inicializarComponente();
     }
 
     private void inicializarComponente() {
+        
         botonBuscar=new JButton("Buscar punto de reciclaje");
         botonBuscar.addActionListener(this);
         this.add(this.botonBuscar);
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent evento) {
+        if (this.botonBuscar==evento.getSource()) {
+            ventanaBusquedaPersonalizada=new VentanaBusquedaPersonalizada();
+            ventanaBusquedaPersonalizada.setVisible(true);
+        }
     }
     
     

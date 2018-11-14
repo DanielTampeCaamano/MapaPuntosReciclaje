@@ -20,12 +20,14 @@ public class VentanaBusquedaPersonalizada extends JFrame implements ActionListen
     }
 
     private void iniciarComponente() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.setSize(400, 400);
+        this.setTitle("Busqueda Personalizada...");
+        this.setVisible(true);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
