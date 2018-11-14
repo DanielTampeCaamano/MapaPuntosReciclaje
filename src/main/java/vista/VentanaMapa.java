@@ -21,7 +21,7 @@ public class VentanaMapa extends JFrame implements ActionListener{
 
     private void iniciarComponente() {
 this.setSize(400, 400);
-        this.setTitle("Busqueda Personalizada...");
+        this.setTitle("Mapa");
         this.setVisible(true);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }

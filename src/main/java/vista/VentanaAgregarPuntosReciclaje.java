@@ -21,7 +21,7 @@ public class VentanaAgregarPuntosReciclaje extends JFrame implements ActionListe
 
     private void iniciarComponente() {
 this.setSize(400, 400);
-        this.setTitle("Busqueda Personalizada...");
+        this.setTitle("Agregar Puntos de Reciclaje...");
         this.setVisible(true);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
