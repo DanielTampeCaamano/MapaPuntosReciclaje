@@ -13,19 +13,22 @@ import javax.swing.JFrame;
  *
  * @author Daniel
  */
-public class VentanaResultadosBusqueda extends JFrame implements ActionListener{
+public class VentanaResultadosBusqueda extends JFrame implements ActionListener {
 
     public VentanaResultadosBusqueda() {
         iniciarComponente();
     }
-    
+
     private void iniciarComponente() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.setSize(400, 400);
+        this.setTitle("Busqueda Personalizada...");
+        this.setVisible(true);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
