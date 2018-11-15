@@ -5,11 +5,9 @@
  */
 package vista;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -19,11 +17,8 @@ import javax.swing.JMenuItem;
  * @author Daniel
  */
 public class PanelMenu extends JMenuBar implements ActionListener {
-
-    VentanaResultadosBusqueda ventanaResultadosBusqueda;
+    private VentanaResultadosBusqueda ventanaResultadosBusqueda;
     private JMenu menuPrincipal;
-    private JMenu menuCuentaAdmin;
-    private JMenuItem menuItemDesconectar;
     private JMenuItem menuItemVidrio;
     private JMenuItem menuItemMetal;
     private JMenuItem menuItemPapel;
@@ -35,7 +30,7 @@ public class PanelMenu extends JMenuBar implements ActionListener {
     }
 
     private void inicializarComponente() {
-        FlowLayout distribucion = new FlowLayout();
+        GridLayout distribucion = new GridLayout(5, 0, 0 , 0);
         this.setLayout(distribucion);
 
         this.menuPrincipal = new JMenu("Menu");
@@ -54,11 +49,6 @@ public class PanelMenu extends JMenuBar implements ActionListener {
 
         this.menuItemBateriaPila = new JMenuItem("Bateria-Pila");
         this.menuItemBateriaPila.addActionListener(this);
-        
-        this.menuCuentaAdmin=new JMenu("Cuenta");
-        
-        this.menuItemDesconectar=new JMenuItem("Desconectar");
-        this.menuItemDesconectar.addActionListener(this);
 
         this.menuPrincipal.add(this.menuItemVidrio);
         this.menuPrincipal.add(this.menuItemMetal);
@@ -66,10 +56,7 @@ public class PanelMenu extends JMenuBar implements ActionListener {
         this.menuPrincipal.add(this.menuItemPlastico);
         this.menuPrincipal.add(this.menuItemBateriaPila);
         
-        this.menuCuentaAdmin.add(this.menuItemDesconectar);
-
         this.add(this.menuPrincipal);
-        this.add(this.menuCuentaAdmin,BorderLayout.SOUTH);
 
     }
 
@@ -100,9 +87,7 @@ public class PanelMenu extends JMenuBar implements ActionListener {
             this.ventanaResultadosBusqueda = new VentanaResultadosBusqueda();
             this.ventanaResultadosBusqueda.setVisible(true);
 
-        }else if (this.menuItemDesconectar==evento.getSource()) {
-            
-        }
+        } 
     }
 
 }

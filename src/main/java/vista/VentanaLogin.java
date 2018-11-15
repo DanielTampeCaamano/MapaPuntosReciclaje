@@ -7,9 +7,9 @@ package vista;
 import java.awt.Container;
 import java.awt.FlowLayout;
 import javax.swing.JFrame;
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 /**
@@ -17,11 +17,11 @@ import javax.swing.JTextField;
  * @author Daniel
  */
 public class VentanaLogin extends JFrame implements ActionListener {
-    private JTextField usuario;
-    private JTextField contraseña;
-    private JLabel texto;
-    private JLabel texto2;
-    
+    private JTextField textFieldUsuario;
+    private JTextField textFieldContraseña;
+    private JLabel textoUsuario;
+    private JLabel textoContraseña;
+    private JButton botonIngresar;
     
     public VentanaLogin() {
         iniciarComponente();
@@ -36,26 +36,33 @@ public class VentanaLogin extends JFrame implements ActionListener {
     this.setTitle("Login");
     this.setVisible(true);
             
-    this.texto= new JLabel("Nombre Y Apellido");
-    this.texto.setBounds(10,40, 120, 10);
-    this.texto2= new JLabel("Contraseña");
-    this.texto2.setBounds(10,100, 120, 10);
+    this.textoUsuario= new JLabel("Nombre Y Apellido");
+    this.textoUsuario.setBounds(10,40, 120, 10);
+    this.textoContraseña= new JLabel("Contraseña");
+    this.textoContraseña.setBounds(10,100, 120, 10);
     
-    this.usuario=new JTextField ();
-    this.usuario.setBounds(130,40 ,150, 20);
-    this.contraseña=new JTextField();
-    this.contraseña.setBounds(130,100 ,150, 20);
+    this.textFieldUsuario=new JTextField ();
+    this.textFieldUsuario.setBounds(130,40 ,150, 20);
+    this.textFieldContraseña=new JTextField();
+    this.textFieldContraseña.setBounds(130,100 ,150, 20);
+    this.botonIngresar=new JButton("Ingresar");
+    this.botonIngresar.addActionListener(this);
     
-    contentpane.add(this.texto);
-    contentpane.add(this.usuario);
-    contentpane.add(this.texto2);
-    contentpane.add(this.contraseña);
+    contentpane.add(this.textoUsuario);
+    contentpane.add(this.textFieldUsuario);
+    contentpane.add(this.textoContraseña);
+    contentpane.add(this.textFieldContraseña);
+    contentpane.add(this.botonIngresar);
     
     this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
     
     @Override
-    public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void actionPerformed(ActionEvent evento) {
+        if (this.botonIngresar==evento.getSource()) {
+            VentanaPrincipal ventanaPrincipal= new VentanaPrincipal(2);
+            ventanaPrincipal.setVisible(true);
+            this.dispose();
+        }
     }
 }

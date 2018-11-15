@@ -6,6 +6,8 @@
 package vista;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -13,19 +15,27 @@ import javax.swing.JPanel;
  *
  * @author Daniel
  */
-public class VentanaPrincipal extends JFrame{
+public class VentanaPrincipal extends JFrame implements ActionListener{
     
     private PanelMenu panelMenu;
     private PanelBuscar panelBuscar;
     private PanelBotonesInferior panelBotonesInferior;
     public VentanaPrincipal() {
-        inicializarCompontente();
+        inicializarCompontente(1);
+    }
+
+    VentanaPrincipal(int caso) {
+        inicializarCompontente(caso);
     }
     
-    private void inicializarCompontente(){
+    //public VentanaPrincipal() {
+     //   inicializarCompontente();
+    //}
+    
+    private void inicializarCompontente(int caso){
         this.panelMenu=new PanelMenu();
         this.panelBuscar=new PanelBuscar();
-        this.panelBotonesInferior=new PanelBotonesInferior();
+        this.panelBotonesInferior=new PanelBotonesInferior(caso);
         this.add(this.panelMenu,BorderLayout.WEST);
         this.add(this.panelBuscar,BorderLayout.NORTH);
         this.add(this.panelBotonesInferior,BorderLayout.SOUTH);
@@ -36,4 +46,16 @@ public class VentanaPrincipal extends JFrame{
         this.setVisible(true);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
+
+    @Override
+    public void actionPerformed(ActionEvent evento) {
+        if (this.panelBotonesInferior.botonIniciarSesion==evento.getSource()) {
+            this.dispose();
+        }
+    }
+
+    
+
+    
+    
 }
