@@ -26,8 +26,8 @@ public class Usuario {
     }
 
     public static void guardarDatosUsuario(int numeroUsuario) {
-        if (Archivo.existeArchivo("Datos/DatosUsuarios/Usuarios.txt")) {
-            List<String> listaDatosUsuarios = Archivo.leerArchivoComoListaString("Datos/DatosUsuarios/Usuarios.txt");
+        if (Archivo.existeArchivo("datos/datosUsuarios/Usuarios.txt")) {
+            List<String> listaDatosUsuarios = Archivo.leerArchivoComoListaString("datos/datosUsuarios/Usuarios.txt");
             String datosUsuario = "";
             String texto = "";
             datosUsuario = "" + numeroUsuario + "";
@@ -35,19 +35,19 @@ public class Usuario {
             for (int i = 0; i < listaDatosUsuarios.size(); i++) {
                 texto += listaDatosUsuarios.get(i) + "\n";
             }
-            Archivo.eliminarArchivo("Datos/DatosUsuarios/Usuarios.txt");
-            Archivo.crearArchivo("Datos/DatosUsuarios/Usuarios.txt", texto);
+            Archivo.eliminarArchivo("datos/datosUsuarios/Usuarios.txt");
+            Archivo.crearArchivo("datos/datosUsuarios/Usuarios.txt", texto);
         } else {
             String datosUsuario = "";
-            Archivo.crearDirectorio("Datos/DatosUsuarios");
+            Archivo.crearDirectorio("datos/datosUsuarios");
             datosUsuario = "" + numeroUsuario + "\n";
-            Archivo.crearArchivo("Datos/DatosUsuarios/Usuarios.txt", datosUsuario);
+            Archivo.crearArchivo("datos/datosUsuarios/Usuarios.txt", datosUsuario);
         }
     }
 
     public static String mostrarDatosUsuario(int numeroUsuario) {
         String datosUsuario = "";
-        List<String> listaUsuarios = Archivo.leerArchivoComoListaString("Datos/DatosUsuarios/Usuarios.txt");
+        List<String> listaUsuarios = Archivo.leerArchivoComoListaString("datos/datosUsuarios/Usuarios.txt");
         for (int i = 0; i < listaUsuarios.size(); i++) {
             if (listaUsuarios.get(i).contains("" + numeroUsuario + "")) {
                 datosUsuario = listaUsuarios.get(i);
@@ -57,10 +57,10 @@ public class Usuario {
     }
 
     public static void editarDatosUsuario(int numeroUsuario, int numeroUsuarioNuevo) {
-        if (Archivo.existeArchivo("Datos/DatosUsuarios/Usuarios.txt")) {
+        if (Archivo.existeArchivo("datos/datosUsuarios/Usuarios.txt")) {
             String datosUsuario;
             String datosUsuarioAlmacenable = "";
-            List<String> listaUsuarios = Archivo.leerArchivoComoListaString("Datos/DatosUsuarios/Usuarios.txt");
+            List<String> listaUsuarios = Archivo.leerArchivoComoListaString("datos/datosUsuarios/Usuarios.txt");
             for (int i = 0; i < listaUsuarios.size(); i++) {
                 if (listaUsuarios.get(i).contains("" + numeroUsuario + "")) {
                     datosUsuario = "" + numeroUsuarioNuevo + "";
@@ -71,15 +71,15 @@ public class Usuario {
             for (int i = 0; i < listaUsuarios.size(); i++) {
                 datosUsuarioAlmacenable += listaUsuarios.get(i) + "\n";
             }
-            Archivo.eliminarArchivo("Datos/DatosUsuarios/Usuarios.txt");
-            Archivo.crearArchivo("Datos/DatosUsuarios/Usuarios.txt", datosUsuarioAlmacenable);
+            Archivo.eliminarArchivo("datos/datosUsuarios/Usuarios.txt");
+            Archivo.crearArchivo("datos/datosUsuarios/Usuarios.txt", datosUsuarioAlmacenable);
         }
     }
 
     public static void borrarDatosUsuario(int numeroUsuario) {
-        if (Archivo.existeArchivo("Datos/DatosUsuarios/Usuarios.txt")) {
+        if (Archivo.existeArchivo("datos/datosUsuarios/Usuarios.txt")) {
             String datosUsuariosAlmacenable = "";
-            List<String> listaUsuarios = Archivo.leerArchivoComoListaString("Datos/DatosUsuarios/Usuarios.txt");
+            List<String> listaUsuarios = Archivo.leerArchivoComoListaString("datos/datosUsuarios/Usuarios.txt");
             for (int i = 0; i < listaUsuarios.size(); i++) {
                 if (listaUsuarios.get(i).contains("" + numeroUsuario + "")) {
                     listaUsuarios.remove(i);
@@ -88,8 +88,8 @@ public class Usuario {
             for (int i = 0; i < listaUsuarios.size(); i++) {
                 datosUsuariosAlmacenable = listaUsuarios.get(i) + "\n";
             }
-            Archivo.eliminarArchivo("Datos/DatosUsuarios/Usuarios.txt");
-            Archivo.crearArchivo("Datos/DatosUsuarios/Usuarios.txt", datosUsuariosAlmacenable);
+            Archivo.eliminarArchivo("atos/datosUsuarios/Usuarios.txt");
+            Archivo.crearArchivo("datos/datosUsuarios/Usuarios.txt", datosUsuariosAlmacenable);
         }
 
     }

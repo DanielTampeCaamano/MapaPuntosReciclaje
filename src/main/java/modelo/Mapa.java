@@ -14,7 +14,7 @@ public class Mapa {
     }
 
     private void cargarMapa() {
-        if (Archivo.existeArchivo("Datos/DatosMapa/Mapa.txt")) {
+        if (Archivo.existeArchivo("datos/datosMapa/Mapa.txt")) {
             List<String> listaTexto;
             listaTexto = leerInformacionMapaComoListaString();
             for (int i = 0; i < listaTexto.size(); i++) {
@@ -144,36 +144,36 @@ public class Mapa {
         for (int i = 0; i < this.puntosReciclaje.size(); i++) { // Recorre el ArrayList de los puntos de reciclaje uno a uno
             texto += this.puntosReciclaje.get(i).toString();// Acumula en un String los datos de cada Punto de Reciclaje,uno a uno
         }
-        Archivo.crearArchivo("Datos/DatosMapa/Mapa.txt", texto);// Crea un Archivo TXT en la ruta dada, apartir del textoLista que se recopiló de los datos de cada Punto de Reciclaje
+        Archivo.crearArchivo("datos/datosMapa/Mapa.txt", texto);// Crea un Archivo TXT en la ruta dada, apartir del textoLista que se recopiló de los datos de cada Punto de Reciclaje
     }
 
     public String leerInformacionMapaComoString() {
         String texto = "";// Se crea una variable String para almacenar datos
-        if (Archivo.existeArchivo("Datos/DatosMapa/Mapa.txt")) {// Verifica que el Archivo exista en la Ruta indicada
-            texto = Archivo.leerArchivoComoString("Datos/DatosMapa/Mapa.txt");// Traspasa la informacion almacenada en el archivo.txt a la variable como String
+        if (Archivo.existeArchivo("datos/datosMapa/Mapa.txt")) {// Verifica que el Archivo exista en la Ruta indicada
+            texto = Archivo.leerArchivoComoString("datos/datosMapa/Mapa.txt");// Traspasa la informacion almacenada en el archivo.txt a la variable como String
         }
         return texto;// Retorna el String que contiene los datos obtenidos
     }
 
     public List<String> leerInformacionMapaComoListaString() {
         List<String> textoLista = null;// Se crea una Lista String para almacenar datos
-        if (Archivo.existeArchivo("Datos/DatosMapa/Mapa.txt")) {// Verifica que el Archivo exista en la Ruta indicada
-            textoLista = Archivo.leerArchivoComoListaString("Datos/DatosMapa/Mapa.txt");// Traspasa la informacion Almacenada en el Archivo.txt a la lista como Lista<String>
+        if (Archivo.existeArchivo("datos/datosMapa/Mapa.txt")) {// Verifica que el Archivo exista en la Ruta indicada
+            textoLista = Archivo.leerArchivoComoListaString("datos/datosMapa/Mapa.txt");// Traspasa la informacion Almacenada en el Archivo.txt a la lista como Lista<String>
         }
         return textoLista;// Retorna la Lista que contiene los datos obtenidos
     }
 
     private void editarInformacionMapa() {
         String texto = ""; // Se crea una variable del tipo "String" para poder acumular los datos de los puntos de reciclaje
-        Archivo.eliminarArchivo("Datos/DatosMapa/Mapa.txt"); // Elimina el registro previo de los datos del Mapa
+        Archivo.eliminarArchivo("datos/datosMapa/Mapa.txt"); // Elimina el registro previo de los datos del Mapa
         for (int i = 0; i < this.puntosReciclaje.size(); i++) { // Recorre el ArrayList de los puntos de reciclaje uno a uno
             texto += this.puntosReciclaje.get(i).toString();// Acumula en un String los datos de cada Punto de Reciclaje,uno a uno
         }
-        Archivo.crearArchivo("Datos/DatosMapa/Mapa.txt", texto);// Crea un Archivo TXT en la ruta dada, apartir del textoLista que se recopiló de los datos del Mapa
+        Archivo.crearArchivo("datos/datosMapa/Mapa.txt", texto);// Crea un Archivo TXT en la ruta dada, apartir del textoLista que se recopiló de los datos del Mapa
     }
 
     public void borrarInformacionMapa() {
-        Archivo.eliminarArchivo("Datos/DatosMapa/Mapa.txt"); // Elimina el registro de los datos del Mapa
+        Archivo.eliminarArchivo("datos/datosMapa/Mapa.txt"); // Elimina el registro de los datos del Mapa
     }
 
 }

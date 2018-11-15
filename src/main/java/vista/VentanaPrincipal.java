@@ -38,7 +38,7 @@ public class VentanaPrincipal extends JFrame{
         this.add(this.panelMenu,BorderLayout.WEST);
         this.add(this.panelBuscar,BorderLayout.NORTH);
         this.add(this.panelBotonesInferior,BorderLayout.SOUTH);
-        this.add(new JLabel(new ImageIcon("Imagenes/MapaGeneral.jpg")));//IMPLEMENTACION PENDIENTE,AUN NO ES MAPA REAL
+        this.add(new JLabel(new ImageIcon("imagenes/MapaGeneral.jpg")));//IMPLEMENTACION PENDIENTE,AUN NO ES MAPA REAL
         
         
         this.setSize(600, 650);

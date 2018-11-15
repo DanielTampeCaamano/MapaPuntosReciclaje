@@ -22,7 +22,7 @@ public class VentanaMapa extends JFrame implements ActionListener {
     }
 
     private void iniciarComponente() {
-        this.add(new JLabel(new ImageIcon("Imagenes/PuntoMapa.jpg")));
+        this.add(new JLabel(new ImageIcon("imagenes/PuntoMapa.jpg")));
         this.setSize(400, 400);
         this.setTitle("Mapa");
         this.setVisible(true);
