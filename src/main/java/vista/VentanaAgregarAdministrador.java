@@ -5,21 +5,24 @@
  */
 package vista;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.BorderLayout;
 import javax.swing.JFrame;
 
 /**
  *
  * @author Daniel
  */
-public class VentanaAgregarAdministrador extends JFrame implements ActionListener {
+public class VentanaAgregarAdministrador extends JFrame {
+
+    PanelAgregarAdministrador panelAgregarAdministrador;
 
     public VentanaAgregarAdministrador() {
         inciarComponente();
     }
 
     private void inciarComponente() {
+        this.panelAgregarAdministrador = new PanelAgregarAdministrador();
+        this.add(this.panelAgregarAdministrador, BorderLayout.CENTER);
         this.setSize(400, 400);
         this.setTitle("Agregar Administrador...");
         this.setVisible(true);
@@ -27,7 +30,4 @@ public class VentanaAgregarAdministrador extends JFrame implements ActionListene
 
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-    }
 }

@@ -6,25 +6,21 @@
 package vista;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 /**
  *
  * @author Daniel
  */
-public class VentanaBusquedaPersonalizada extends JFrame implements ActionListener{
-    PanelCentral panelSuperior;
+public class VentanaBusquedaPersonalizada extends JFrame {
+    PanelBusquedaPersonalizadaCentral panelSuperior;
     public VentanaBusquedaPersonalizada() {
         iniciarComponente();
     }
 
     private void iniciarComponente() {
         
-        this.panelSuperior=new PanelCentral();
+        this.panelSuperior=new PanelBusquedaPersonalizadaCentral();
         this.add(this.panelSuperior,BorderLayout.CENTER);
         this.setSize(400, 400);
         this.setTitle("Busqueda Personalizada...");
@@ -32,8 +28,5 @@ public class VentanaBusquedaPersonalizada extends JFrame implements ActionListen
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent evento) {
-    }
     
 }

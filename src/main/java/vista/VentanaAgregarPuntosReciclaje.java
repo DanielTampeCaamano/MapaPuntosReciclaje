@@ -5,6 +5,7 @@
  */
 package vista;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
@@ -14,12 +15,14 @@ import javax.swing.JFrame;
  * @author Daniel
  */
 public class VentanaAgregarPuntosReciclaje extends JFrame implements ActionListener {
-
+    PanelFormularioAgregarPuntosReciclaje panelFormularioPuntosReciclaje;
     public VentanaAgregarPuntosReciclaje() {
         iniciarComponente();
     }
 
     private void iniciarComponente() {
+        this.panelFormularioPuntosReciclaje=new PanelFormularioAgregarPuntosReciclaje();
+        this.add(this.panelFormularioPuntosReciclaje,BorderLayout.CENTER);
         this.setSize(400, 400);
         this.setTitle("Agregar Puntos de Reciclaje...");
         this.setVisible(true);

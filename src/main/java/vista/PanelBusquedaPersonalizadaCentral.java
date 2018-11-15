@@ -19,7 +19,7 @@ import javax.swing.JTextField;
  *
  * @author Daniel
  */
-class PanelCentral extends JPanel implements ActionListener {
+class PanelBusquedaPersonalizadaCentral extends JPanel implements ActionListener {
     private JButton botonBuscar;
     private JLabel labelDireccion;
     private JLabel labelPosicion;
@@ -29,7 +29,7 @@ class PanelCentral extends JPanel implements ActionListener {
     private JCheckBox cajaCheckeosCategorias;
     private JCheckBoxMenuItem cajaCheckeoCategoria;
 
-    public PanelCentral() {
+    public PanelBusquedaPersonalizadaCentral() {
         inicializarComponente();
     }
 
