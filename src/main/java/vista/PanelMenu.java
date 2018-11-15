@@ -5,6 +5,7 @@
  */
 package vista;
 
+import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,12 +21,14 @@ import javax.swing.JMenuItem;
 public class PanelMenu extends JMenuBar implements ActionListener {
 
     VentanaResultadosBusqueda ventanaResultadosBusqueda;
-    JMenu menuPrincipal;
-    JMenuItem menuItemVidrio;
-    JMenuItem menuItemMetal;
-    JMenuItem menuItemPapel;
-    JMenuItem menuItemPlastico;
-    JMenuItem menuItemBateriaPila;
+    private JMenu menuPrincipal;
+    private JMenu menuCuentaAdmin;
+    private JMenuItem menuItemDesconectar;
+    private JMenuItem menuItemVidrio;
+    private JMenuItem menuItemMetal;
+    private JMenuItem menuItemPapel;
+    private JMenuItem menuItemPlastico;
+    private JMenuItem menuItemBateriaPila;
 
     public PanelMenu() {
         inicializarComponente();
@@ -51,14 +54,22 @@ public class PanelMenu extends JMenuBar implements ActionListener {
 
         this.menuItemBateriaPila = new JMenuItem("Bateria-Pila");
         this.menuItemBateriaPila.addActionListener(this);
+        
+        this.menuCuentaAdmin=new JMenu("Cuenta");
+        
+        this.menuItemDesconectar=new JMenuItem("Desconectar");
+        this.menuItemDesconectar.addActionListener(this);
 
         this.menuPrincipal.add(this.menuItemVidrio);
         this.menuPrincipal.add(this.menuItemMetal);
         this.menuPrincipal.add(this.menuItemPapel);
         this.menuPrincipal.add(this.menuItemPlastico);
         this.menuPrincipal.add(this.menuItemBateriaPila);
+        
+        this.menuCuentaAdmin.add(this.menuItemDesconectar);
 
         this.add(this.menuPrincipal);
+        this.add(this.menuCuentaAdmin,BorderLayout.SOUTH);
 
     }
 
@@ -89,6 +100,8 @@ public class PanelMenu extends JMenuBar implements ActionListener {
             this.ventanaResultadosBusqueda = new VentanaResultadosBusqueda();
             this.ventanaResultadosBusqueda.setVisible(true);
 
+        }else if (this.menuItemDesconectar==evento.getSource()) {
+            
         }
     }
 

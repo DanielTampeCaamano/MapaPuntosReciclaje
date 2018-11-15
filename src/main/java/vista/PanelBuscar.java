@@ -16,8 +16,8 @@ import javax.swing.JPanel;
  * @author Daniel
  */
 public class PanelBuscar extends JPanel implements ActionListener{
-    JButton botonBuscar;
-    VentanaBusquedaPersonalizada ventanaBusquedaPersonalizada;
+    private JButton botonBuscar;
+    private VentanaBusquedaPersonalizada ventanaBusquedaPersonalizada;
     public PanelBuscar() {
         inicializarComponente();
     }

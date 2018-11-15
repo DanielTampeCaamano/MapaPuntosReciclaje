@@ -13,18 +13,18 @@ import javax.swing.JFrame;
  *
  * @author Daniel
  */
-public class VentanaAgregarAdministrador extends JFrame implements ActionListener{
+public class VentanaAgregarAdministrador extends JFrame implements ActionListener {
 
     public VentanaAgregarAdministrador() {
         inciarComponente();
     }
-        
-    private void inciarComponente(){
-    this.setSize(400, 400);
-        this.setTitle("Busqueda Personalizada...");
+
+    private void inciarComponente() {
+        this.setSize(400, 400);
+        this.setTitle("Agregar Administrador...");
         this.setVisible(true);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-    
+
     }
 
     @Override

@@ -13,14 +13,14 @@ import javax.swing.JFrame;
  *
  * @author Daniel
  */
-public class VentanaAgregarPuntosReciclaje extends JFrame implements ActionListener{
+public class VentanaAgregarPuntosReciclaje extends JFrame implements ActionListener {
 
     public VentanaAgregarPuntosReciclaje() {
         iniciarComponente();
     }
 
     private void iniciarComponente() {
-this.setSize(400, 400);
+        this.setSize(400, 400);
         this.setTitle("Agregar Puntos de Reciclaje...");
         this.setVisible(true);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -30,5 +30,5 @@ this.setSize(400, 400);
     public void actionPerformed(ActionEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

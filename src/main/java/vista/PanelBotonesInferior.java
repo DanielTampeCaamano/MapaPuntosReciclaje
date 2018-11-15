@@ -16,9 +16,9 @@ import javax.swing.JPanel;
  */
 public class PanelBotonesInferior extends JPanel implements ActionListener {
 
-    JButton botonAgregarPuntoReciclaje;
-    JButton botonAgregarAdministrador;
-    JButton botonIniciarSesion;
+    private JButton botonAgregarPuntoReciclaje;
+    private JButton botonAgregarAdministrador;
+    private JButton botonIniciarSesion;
 
     public PanelBotonesInferior() {
         inicializarComponente1();

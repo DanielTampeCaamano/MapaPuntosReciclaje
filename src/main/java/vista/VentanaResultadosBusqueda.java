@@ -5,6 +5,7 @@
  */
 package vista;
 
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
@@ -14,12 +15,13 @@ import javax.swing.JFrame;
  * @author Daniel
  */
 public class VentanaResultadosBusqueda extends JFrame implements ActionListener {
-
+    PanelResultados panelResultados;
     public VentanaResultadosBusqueda() {
         iniciarComponente();
     }
 
     private void iniciarComponente() {
+        GridLayout distribucion=new GridLayout(9, 0);
         this.setSize(400, 400);
         this.setTitle("Resultados Busqueda");
         this.setVisible(true);
