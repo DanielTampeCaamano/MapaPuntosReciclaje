@@ -15,21 +15,23 @@ import javax.swing.JPanel;
  * @author Daniel
  */
 public class PanelBotonesInferior extends JPanel implements ActionListener {
-    
+
     private JButton botonAgregarPuntoReciclaje;
     private JButton botonAgregarAdministrador;
     private JButton botonIniciarSesion;
     private JButton botonDesconectar;
     private VentanaLogin ventanaLogin;
-    
+    private VentanaAgregarPuntosReciclaje ventanaAgregarPuntosReciclaje;
+    private VentanaAgregarAdministrador ventanaAgregarAdministrador;
+
     public PanelBotonesInferior() {
         inicializarComponente(1);
     }
-    
+
     public PanelBotonesInferior(int caso) {
         inicializarComponente(caso);
     }
-    
+
     private void inicializarComponente(int caso) {
         switch (caso) {
             case 1:
@@ -68,9 +70,9 @@ public class PanelBotonesInferior extends JPanel implements ActionListener {
                 this.add(this.botonDesconectar);
                 break;
         }
-        
+
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent evento) {
         if (this.botonIniciarSesion == evento.getSource()) {
@@ -82,12 +84,12 @@ public class PanelBotonesInferior extends JPanel implements ActionListener {
             this.botonDesconectar.setVisible(false);
             this.botonIniciarSesion.setVisible(true);
         } else if (this.botonAgregarPuntoReciclaje == evento.getSource()) {
-            VentanaAgregarPuntosReciclaje ventanaAgregarPuntosReciclaje = new VentanaAgregarPuntosReciclaje();
+            this.ventanaAgregarPuntosReciclaje = new VentanaAgregarPuntosReciclaje();
             ventanaAgregarPuntosReciclaje.setVisible(true);
         } else if (this.botonAgregarAdministrador == evento.getSource()) {
-            VentanaAgregarAdministrador ventanaAgregarAdministrador = new VentanaAgregarAdministrador();
+            this.ventanaAgregarAdministrador = new VentanaAgregarAdministrador();
             ventanaAgregarAdministrador.setVisible(true);
         }
     }
-    
+
 }

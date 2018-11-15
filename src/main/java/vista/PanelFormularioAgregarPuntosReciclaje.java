@@ -50,10 +50,10 @@ class PanelFormularioAgregarPuntosReciclaje extends JPanel implements ActionList
         this.campoTextoDireccion = new JTextField(35);
         this.labelPosicion = new JLabel("Posicion");
         this.campoTextoCoordenadas = new JTextField(35);
-        this.labelDireccion = new JLabel("Numero Visitas");
-        this.campoTextoDireccion = new JTextField(35);
-        this.labelDireccion = new JLabel("Cantidad Reciclada");
-        this.campoTextoDireccion = new JTextField(35);
+        this.labelNumeroVisitas = new JLabel("Numero Visitas");
+        this.campoTextoNumeroVisitas = new JTextField(35);
+        this.labelCantidadReciclada = new JLabel("Cantidad Reciclada");
+        this.campoTextoCantidadReciclada = new JTextField(35);
         this.labelCategorias = new JLabel("Categorias");
         this.cajaCheckeosCategorias = new JCheckBox();
         this.cajaCheckeoItemCategoria1 = new JCheckBoxMenuItem("categoria1");
@@ -87,7 +87,7 @@ class PanelFormularioAgregarPuntosReciclaje extends JPanel implements ActionList
     @Override
     public void actionPerformed(ActionEvent evento) {
         if (this.botonVolver==evento.getSource()) {
-            VentanaPrincipal VentanaPrincipal = new VentanaPrincipal();
+            VentanaPrincipal VentanaPrincipal = new VentanaPrincipal(2);
             VentanaPrincipal.setVisible(true);
         }else if (this.botonAgregar==evento.getSource()) {
             
