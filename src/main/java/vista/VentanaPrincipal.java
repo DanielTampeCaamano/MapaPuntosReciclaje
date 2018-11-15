@@ -6,16 +6,13 @@
 package vista;
 
 import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 /**
  *
  * @author Daniel
  */
-public class VentanaPrincipal extends JFrame implements ActionListener{
+public class VentanaPrincipal extends JFrame{
     
     private PanelMenu panelMenu;
     private PanelBuscar panelBuscar;
@@ -47,12 +44,6 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent evento) {
-        if (this.panelBotonesInferior.botonIniciarSesion==evento.getSource()) {
-            this.setVisible(false);
-        }
-    }
 
     
 

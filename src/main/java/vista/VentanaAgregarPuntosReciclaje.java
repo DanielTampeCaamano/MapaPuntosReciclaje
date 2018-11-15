@@ -6,32 +6,28 @@
 package vista;
 
 import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
 /**
  *
  * @author Daniel
  */
-public class VentanaAgregarPuntosReciclaje extends JFrame implements ActionListener {
+public class VentanaAgregarPuntosReciclaje extends JFrame  {
+
     PanelFormularioAgregarPuntosReciclaje panelFormularioPuntosReciclaje;
+
     public VentanaAgregarPuntosReciclaje() {
         iniciarComponente();
     }
 
     private void iniciarComponente() {
-        this.panelFormularioPuntosReciclaje=new PanelFormularioAgregarPuntosReciclaje();
-        this.add(this.panelFormularioPuntosReciclaje,BorderLayout.CENTER);
+        this.panelFormularioPuntosReciclaje = new PanelFormularioAgregarPuntosReciclaje();
+        this.add(this.panelFormularioPuntosReciclaje, BorderLayout.CENTER);
         this.setSize(400, 400);
         this.setTitle("Agregar Puntos de Reciclaje...");
         this.setVisible(true);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
 }

@@ -50,6 +50,8 @@ class PanelAgregarAdministrador extends JPanel implements ActionListener{
         this.add(this.campoTextoApellido);
         this.add(this.labelContrasena);
         this.add(this.campoTextoContrasena);
+        this.add(this.botonAgregar);
+        this.add(this.botonVolver);
     }
     
     @Override
@@ -58,6 +60,7 @@ class PanelAgregarAdministrador extends JPanel implements ActionListener{
             
         }else if (this.botonVolver==evento.getSource()) {
             VentanaPrincipal ventanaPrincipal=new VentanaPrincipal();
+            ventanaPrincipal.setVisible(true);
         }
     }
 }

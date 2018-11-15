@@ -15,21 +15,21 @@ import javax.swing.JPanel;
  * @author Daniel
  */
 public class PanelBotonesInferior extends JPanel implements ActionListener {
-
+    
     private JButton botonAgregarPuntoReciclaje;
     private JButton botonAgregarAdministrador;
-    JButton botonIniciarSesion;
+    private JButton botonIniciarSesion;
     private JButton botonDesconectar;
     private VentanaLogin ventanaLogin;
-
+    
     public PanelBotonesInferior() {
         inicializarComponente(1);
     }
-
+    
     public PanelBotonesInferior(int caso) {
         inicializarComponente(caso);
     }
-
+    
     private void inicializarComponente(int caso) {
         switch (caso) {
             case 1:
@@ -68,9 +68,9 @@ public class PanelBotonesInferior extends JPanel implements ActionListener {
                 this.add(this.botonDesconectar);
                 break;
         }
-
+        
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent evento) {
         if (this.botonIniciarSesion == evento.getSource()) {
@@ -81,13 +81,13 @@ public class PanelBotonesInferior extends JPanel implements ActionListener {
             this.botonAgregarPuntoReciclaje.setVisible(false);
             this.botonDesconectar.setVisible(false);
             this.botonIniciarSesion.setVisible(true);
-        }else if(this.botonAgregarPuntoReciclaje==evento.getSource()){
-            VentanaAgregarPuntosReciclaje ventanaAgregarPuntosReciclaje=new VentanaAgregarPuntosReciclaje();
+        } else if (this.botonAgregarPuntoReciclaje == evento.getSource()) {
+            VentanaAgregarPuntosReciclaje ventanaAgregarPuntosReciclaje = new VentanaAgregarPuntosReciclaje();
             ventanaAgregarPuntosReciclaje.setVisible(true);
-        }else if(this.botonAgregarAdministrador==evento.getSource()){
-            VentanaAgregarAdministrador ventanaAgregarAdministrador=new VentanaAgregarAdministrador();
+        } else if (this.botonAgregarAdministrador == evento.getSource()) {
+            VentanaAgregarAdministrador ventanaAgregarAdministrador = new VentanaAgregarAdministrador();
             ventanaAgregarAdministrador.setVisible(true);
         }
     }
-
+    
 }

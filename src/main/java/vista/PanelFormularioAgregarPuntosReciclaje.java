@@ -81,12 +81,16 @@ class PanelFormularioAgregarPuntosReciclaje extends JPanel implements ActionList
         this.add(this.labelCategorias);
         this.add(this.cajaCheckeosCategorias);
         this.add(this.botonAgregar);
+        this.add(this.botonVolver);
     }
 
     @Override
     public void actionPerformed(ActionEvent evento) {
         if (this.botonVolver==evento.getSource()) {
             VentanaPrincipal VentanaPrincipal = new VentanaPrincipal();
+            VentanaPrincipal.setVisible(true);
+        }else if (this.botonAgregar==evento.getSource()) {
+            
         }
     }
     
