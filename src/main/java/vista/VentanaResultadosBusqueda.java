@@ -6,16 +6,13 @@
 package vista;
 
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
 /**
  *
  * @author Daniel
  */
-public class VentanaResultadosBusqueda extends JFrame implements ActionListener {
+public class VentanaResultadosBusqueda extends JFrame{
     PanelResultados panelResultados;
     public VentanaResultadosBusqueda() {
         iniciarComponente();
@@ -32,10 +29,6 @@ public class VentanaResultadosBusqueda extends JFrame implements ActionListener 
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        VentanaMapa ventanaMapa=new VentanaMapa();
-        this.setVisible(false);
-    }
+    
 
 }
