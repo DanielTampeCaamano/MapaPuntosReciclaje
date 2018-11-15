@@ -1,6 +1,5 @@
 .classpath
 .project
-.directory
 .settings/
 target/
 pom.xml.tag
