@@ -5,6 +5,7 @@
  */
 package vista;
 
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,7 +22,10 @@ public class VentanaResultadosBusqueda extends JFrame implements ActionListener 
     }
 
     private void iniciarComponente() {
-        GridLayout distribucion=new GridLayout(9, 0);
+        FlowLayout distribucion=new FlowLayout();
+        this.setLayout(distribucion);
+        this.panelResultados=new PanelResultados(9);
+        this.add(this.panelResultados);
         this.setSize(400, 400);
         this.setTitle("Resultados Busqueda");
         this.setVisible(true);

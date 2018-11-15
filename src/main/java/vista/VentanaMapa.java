@@ -15,7 +15,7 @@ import javax.swing.JFrame;
  */
 public class VentanaMapa extends JFrame implements ActionListener {
 
-    public VentanaMapa() {
+    public VentanaMapa() {//IMPLEMENTACION PENDIENTE
         iniciarComponente();
     }
 
@@ -27,7 +27,7 @@ public class VentanaMapa extends JFrame implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent evento) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
