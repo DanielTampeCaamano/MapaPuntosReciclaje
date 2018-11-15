@@ -27,7 +27,7 @@ public class VentanaBusquedaPersonalizada extends JFrame implements ActionListen
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent evento) {
     }
     
 }

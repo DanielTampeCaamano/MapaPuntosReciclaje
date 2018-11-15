@@ -50,7 +50,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent evento) {
         if (this.panelBotonesInferior.botonIniciarSesion==evento.getSource()) {
-            this.dispose();
+            this.setVisible(false);
         }
     }
 
