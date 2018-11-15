@@ -7,7 +7,9 @@ package vista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 /**
  *
@@ -15,11 +17,12 @@ import javax.swing.JFrame;
  */
 public class VentanaMapa extends JFrame implements ActionListener {
 
-    public VentanaMapa() {//IMPLEMENTACION PENDIENTE
+    public VentanaMapa() {//IMPLEMENTACION PENDIENTE,AUN NO ES MAPA REAL
         iniciarComponente();
     }
 
     private void iniciarComponente() {
+        this.add(new JLabel(new ImageIcon("Imagenes/PuntoMapa.jpg")));
         this.setSize(400, 400);
         this.setTitle("Mapa");
         this.setVisible(true);
