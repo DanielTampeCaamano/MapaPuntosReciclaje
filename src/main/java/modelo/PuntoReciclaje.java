@@ -1,13 +1,12 @@
 package modelo;
 
 import java.util.ArrayList;
-import modelo.Categoria;
 
 public class PuntoReciclaje {
 
     private String direccion;
     private String coordenada;
-    private ArrayList<Categoria> categorias = new ArrayList<Categoria>();
+    private ArrayList<Categoria> categorias;
     private double cantidadReciclada;
     private int cantidadVecesVisitada;
 
