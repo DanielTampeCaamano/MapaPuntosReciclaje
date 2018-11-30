@@ -8,6 +8,7 @@ public class Administrador {
     private String nombreAdministrador;
     private String apellidoAdministrador;
     private String contrasena;
+    private static String rutaDatosAdministradores= "datos/datosAdministradores/Administradores.txt";
 
     public Administrador(String nombreAdministrador, String apellidoAdministrador, String contrasena) {
         this.nombreAdministrador = nombreAdministrador;
@@ -36,8 +37,8 @@ public class Administrador {
     }
 
     public static void guardarDatosAdministrador(String nombreAdministrador, String apellidoAdministrador, String contrasena) {
-        if (Archivo.existeArchivo("datos/datosAdministradores/Administradores.txt")) {// Verifica si existe el archivo indicado en la ruta
-            List<String> listaDatosAdministradores=Archivo.leerArchivoComoListaString("datos/datosAdministradores/Administradores.txt");// Se almacena los datos de los administradores en una Lista<String>, cada posicion de la lista equivale a una linea
+        if (Archivo.existeArchivo(rutaDatosAdministradores)) {// Verifica si existe el archivo indicado en la ruta
+            List<String> listaDatosAdministradores=Archivo.leerArchivoComoListaString(rutaDatosAdministradores);// Se almacena los datos de los administradores en una Lista<String>, cada posicion de la lista equivale a una linea
             String datosAdministrador;
             String texto = "";
             datosAdministrador = nombreAdministrador + "," + apellidoAdministrador + "," + contrasena;
@@ -45,19 +46,19 @@ public class Administrador {
             for (int i = 0; i < listaDatosAdministradores.size(); i++) {
                 texto+=listaDatosAdministradores.get(i)+"\n";
             }
-            Archivo.eliminarArchivo("datos/datosAdministradores/Administradores.txt");
-            Archivo.crearArchivo("datos/datosAdministradores/Administradores.txt", texto);
+            Archivo.eliminarArchivo(rutaDatosAdministradores);
+            Archivo.crearArchivo(rutaDatosAdministradores, texto);
         } else {
             String texto;
             texto = nombreAdministrador + "," + apellidoAdministrador + "," + contrasena + "\n";
-            Archivo.crearArchivo("datos/datosAdministradores/Administradores.txt", texto);
+            Archivo.crearArchivo(rutaDatosAdministradores, texto);
         }
     }
 
     public static String mostrarDatosAdministrador(String nombreAdministrador, String apellidoAdministrador) {
         String datosAdministrador = "";
-        if (Archivo.existeArchivo("datos/datosAdministradores/Administradores.txt")) {
-            List<String> listaDatosAdministradores = Archivo.leerArchivoComoListaString("datos/datosAdministradores/Administradores.txt");
+        if (Archivo.existeArchivo(rutaDatosAdministradores)) {
+            List<String> listaDatosAdministradores = Archivo.leerArchivoComoListaString(rutaDatosAdministradores);
             for (int i = 0; i < listaDatosAdministradores.size(); i++) {
                 if (listaDatosAdministradores.get(i).contains(nombreAdministrador + apellidoAdministrador)) {
                     datosAdministrador = listaDatosAdministradores.get(i);
@@ -68,9 +69,9 @@ public class Administrador {
     }
 
     public static void editarDatosAdministradorContrasenaNueva(String nombreAdministrador, String apellidoAdministrador, String contrasenaNueva) {
-        if (Archivo.existeArchivo("datos/datosAdministradores/Administradores.txt")) {
+        if (Archivo.existeArchivo(rutaDatosAdministradores)) {
             String texto = "";
-            List<String> listaDatosAdministradores = Archivo.leerArchivoComoListaString("datos/datosAdministradores/Administradores.txt");
+            List<String> listaDatosAdministradores = Archivo.leerArchivoComoListaString(rutaDatosAdministradores);
             for (int i = 0; i < listaDatosAdministradores.size(); i++) {
                 if (listaDatosAdministradores.get(i).contains(nombreAdministrador + apellidoAdministrador)) {
                     String[] lineaAntigua;
@@ -84,16 +85,16 @@ public class Administrador {
             for (int i = 0; i < listaDatosAdministradores.size(); i++) {
                 texto += listaDatosAdministradores.get(i) + "\n";
             }
-            Archivo.eliminarArchivo("datos/datosAdministradores/Administradores");
-            Archivo.crearArchivo("datos/datosAdministradores/Administradores.txt", texto);
+            Archivo.eliminarArchivo(rutaDatosAdministradores);
+            Archivo.crearArchivo(rutaDatosAdministradores, texto);
         }
     }
 
     public static void borrarDatosAdministrador(String nombreAdministrador, String apellidoAdministrador) {
-        if (Archivo.existeArchivo("datos/datosAdministradores/Administradores.txt")) {
+        if (Archivo.existeArchivo(rutaDatosAdministradores)) {
             String texto = "";
 
-            List<String> listaDatosAdministradores = Archivo.leerArchivoComoListaString("datos/datosAdministradores/Administradores.txt");
+            List<String> listaDatosAdministradores = Archivo.leerArchivoComoListaString(rutaDatosAdministradores);
             for (int i = 0; i < listaDatosAdministradores.size(); i++) {
                 if (listaDatosAdministradores.get(i).contains(nombreAdministrador + apellidoAdministrador)) {
                     listaDatosAdministradores.remove(i);
@@ -102,8 +103,8 @@ public class Administrador {
             for (int i = 0; i < listaDatosAdministradores.size(); i++) {
                 texto += listaDatosAdministradores.get(i) + "\n";
             }
-            Archivo.eliminarArchivo("datos/datosAdministradores/Administradores.txt");
-            Archivo.crearArchivo("datos/datosAdministradores/Administradores.txt", texto);
+            Archivo.eliminarArchivo(rutaDatosAdministradores);
+            Archivo.crearArchivo(rutaDatosAdministradores, texto);
         } else {
             System.out.println("No existe el archivo en la ruta de destino...");
         }
