@@ -20,7 +20,7 @@ public class Mapa {
             for (int i = 0; i < listaTexto.size(); i++) {
                 String cadena = listaTexto.get(i);
                 String[] linea = cadena.split(",");
-                ArrayList<Categoria> categorias = null;
+                ArrayList<Categoria> categorias = new ArrayList<>();
                 for (int j = 2; j < linea.length - 2; j++) {
                     if (null != linea[j]) {
                         switch (linea[j]) {
@@ -60,13 +60,13 @@ public class Mapa {
                     }
 
                 }
-                PuntoReciclaje puntoReciclaje = new PuntoReciclaje(linea[0], linea[1], categorias, Double.parseDouble(linea[linea.length - 2]), Integer.parseInt(linea[linea.length - 1]));
+                PuntoReciclaje puntoReciclaje = new PuntoReciclaje(linea[0], Double.parseDouble(linea[1]), Double.parseDouble(linea[2]), categorias, Double.parseDouble(linea[linea.length - 2]), Integer.parseInt(linea[linea.length - 1]));
                 this.puntosReciclaje.add(puntoReciclaje);
             }
             System.out.println("Puntos de Reciclaje Cargados...");
             System.out.println("Mapa Cargado...");
-        }else{
-            System.out.println("Mapa Cargado...");
+        } else {
+            System.out.println("Mapa Vacio Cargado...");
         }
 
     }
@@ -80,6 +80,7 @@ public class Mapa {
         }
         return coincidenciasPuntosReciclaje;
     }
+
     public ArrayList<PuntoReciclaje> buscarPuntosReciclajeMedianteCategoria(String categoria) {
         ArrayList<PuntoReciclaje> coincidenciasPuntosReciclaje = new ArrayList<>();
         for (int i = 0; i < this.puntosReciclaje.size(); i++) {
@@ -90,23 +91,24 @@ public class Mapa {
         return coincidenciasPuntosReciclaje;
     }
 
-    public void guardarPuntoReciclajeMapa(String direccion, String coordenada, ArrayList<Categoria> categorias, double cantidadReciclada, int cantidadVecesVisitada) {
-        PuntoReciclaje puntoReciclaje = new PuntoReciclaje(direccion, coordenada, categorias, cantidadReciclada, cantidadVecesVisitada);
+    public void guardarPuntoReciclajeMapa(String direccion, double latitud, double longitud, ArrayList<Categoria> categorias, double cantidadReciclada, int cantidadVecesVisitada) {
+        PuntoReciclaje puntoReciclaje = new PuntoReciclaje(direccion, latitud,longitud, categorias, cantidadReciclada, cantidadVecesVisitada);
         this.puntosReciclaje.add(puntoReciclaje);
         this.guardarInformacionMapa();
     }
 
-    public void guardarPuntoReciclajeMapa(String direccion, String coordenada, ArrayList<Categoria> categorias) {
-        PuntoReciclaje puntoReciclaje = new PuntoReciclaje(direccion, coordenada, categorias);
+    public void guardarPuntoReciclajeMapa(String direccion, double latitud, double longitud, ArrayList<Categoria> categorias) {
+        PuntoReciclaje puntoReciclaje = new PuntoReciclaje(direccion, latitud,longitud, categorias);
         this.puntosReciclaje.add(puntoReciclaje);
         this.guardarInformacionMapa();
     }
 
-    public void editarPuntoReciclajeLocacionNueva(String direccion, String direccionNueva, String coordenadaNueva) {
+    public void editarPuntoReciclajeLocacionNueva(String direccion, String direccionNueva, double latitudNueva, double longitudNueva) {
         for (int i = 0; i < this.puntosReciclaje.size(); i++) {
             if (this.puntosReciclaje.get(i).getDireccion().contains(direccion)) {
                 this.puntosReciclaje.get(i).setDireccion(direccionNueva);
-                this.puntosReciclaje.get(i).setCoordenada(coordenadaNueva);
+                this.puntosReciclaje.get(i).setLatitud(latitudNueva);
+                this.puntosReciclaje.get(i).setLongitud(longitudNueva);
             }
         }
         this.editarInformacionMapa();
