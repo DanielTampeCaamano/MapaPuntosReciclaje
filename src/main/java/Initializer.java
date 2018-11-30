@@ -49,8 +49,8 @@ public class Initializer extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("/FXML1.fxml"));
         
-        stage.setTitle("FXML Welcome");
-        stage.setScene(new Scene(root, 300, 275));
+        stage.setTitle("Maps Test");
+        stage.setScene(new Scene(root, 800, 700));
         stage.show();
     }
 }
