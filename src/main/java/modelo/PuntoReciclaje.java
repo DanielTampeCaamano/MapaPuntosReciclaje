@@ -5,77 +5,90 @@ import java.util.ArrayList;
 public class PuntoReciclaje {
 
     private String direccion;
-    private String coordenada;
+    private double latitud;
+    private double longitud;
     private ArrayList<Categoria> categorias;
     private double cantidadReciclada;
     private int cantidadVecesVisitada;
 
-    public PuntoReciclaje(String direccion, String coordenada, ArrayList<Categoria> categorias) {
+    public PuntoReciclaje(String direccion, double latitud, double longitud, ArrayList<Categoria> categorias) {
         this.direccion = direccion;
-        this.coordenada = coordenada;
+        this.latitud = latitud;
+        this.longitud = longitud;
         this.categorias = categorias;
         this.cantidadReciclada = 0;
         this.cantidadVecesVisitada = 0;
     }
 
-    public PuntoReciclaje(String direccion, String coordenada, ArrayList<Categoria> categorias, double cantidadReciclada, int cantidadVecesVisitada) {
+    public PuntoReciclaje(String direccion, double latitud, double longitud, ArrayList<Categoria> categorias, double cantidadReciclada, int cantidadVecesVisitada) {
         this.direccion = direccion;
-        this.coordenada = coordenada;
-        this.categorias=categorias;
+        this.latitud = latitud;
+        this.longitud = longitud;
+        this.categorias = categorias;
         this.cantidadReciclada = cantidadReciclada;
         this.cantidadVecesVisitada = cantidadVecesVisitada;
     }
-    public PuntoReciclaje(String direccion, String coordenada, ArrayList<Categoria> categorias, int cantidadVecesVisitada) {
+
+    public PuntoReciclaje(String direccion, double latitud, double longitud, ArrayList<Categoria> categorias, int cantidadVecesVisitada) {
         this.direccion = direccion;
-        this.coordenada = coordenada;
-        this.categorias=categorias;
+        this.latitud = latitud;
+        this.longitud = longitud;
+        this.categorias = categorias;
         this.cantidadReciclada = 0;
         this.cantidadVecesVisitada = cantidadVecesVisitada;
     }
-    public PuntoReciclaje(String direccion, String coordenada, ArrayList<Categoria> categorias, double cantidadReciclada) {
+
+    public PuntoReciclaje(String direccion, double latitud, double longitud, ArrayList<Categoria> categorias, double cantidadReciclada) {
         this.direccion = direccion;
-        this.coordenada = coordenada;
-        this.categorias=categorias;
+        this.latitud = latitud;
+        this.longitud = longitud;
+        this.categorias = categorias;
         this.cantidadReciclada = cantidadReciclada;
         this.cantidadVecesVisitada = 0;
     }
 
-    
-
     public String getDireccion() {
-        return this.direccion;
+        return direccion;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public double getLatitud() {
+        return latitud;
     }
 
-    public String getCoordenada() {
-        return this.coordenada;
-    }
-
-    public void setCoordenada(String coordenada) {
-        this.coordenada = coordenada;
+    public double getLongitud() {
+        return longitud;
     }
 
     public ArrayList<Categoria> getCategorias() {
         return categorias;
     }
 
+    public double getCantidadReciclada() {
+        return cantidadReciclada;
+    }
+
+    public int getCantidadVecesVisitada() {
+        return cantidadVecesVisitada;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public void setLatitud(double latitud) {
+        this.latitud = latitud;
+    }
+
+    public void setLongitud(double longitud) {
+        this.longitud = longitud;
+    }
+
     public void setCategorias(ArrayList<Categoria> categorias) {
         this.categorias = categorias;
-    }
-    
-    public double getCantidadReciclada() {
-        return this.cantidadReciclada;
     }
 
     public void setCantidadReciclada(double cantidadReciclada) {
         this.cantidadReciclada = cantidadReciclada;
-    }
-
-    public int getCantidadVecesVisitada() {
-        return this.cantidadVecesVisitada;
     }
 
     public void setCantidadVecesVisitada(int cantidadVecesVisitada) {
@@ -83,13 +96,13 @@ public class PuntoReciclaje {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         String linea;
-        linea=this.direccion+","+this.coordenada+","+this.cantidadReciclada+","+this.cantidadVecesVisitada;
+        linea = this.direccion + "," + this.latitud + "," + this.longitud + "," + this.cantidadReciclada + "," + this.cantidadVecesVisitada;
         for (int i = 0; i < this.categorias.size(); i++) {
-            linea+=","+categorias.get(i).toString();
+            linea += "," + categorias.get(i).toString();
         }
-        linea+=";";
+        linea += ";";
         return linea;
     }
 }
