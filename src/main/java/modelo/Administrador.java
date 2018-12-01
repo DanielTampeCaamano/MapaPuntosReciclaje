@@ -60,7 +60,8 @@ public class Administrador {
         if (Archivo.existeArchivo(rutaDatosAdministradores)) {
             List<String> listaDatosAdministradores = Archivo.leerArchivoComoListaString(rutaDatosAdministradores);
             for (int i = 0; i < listaDatosAdministradores.size(); i++) {
-                if (listaDatosAdministradores.get(i).contains(nombreAdministrador + apellidoAdministrador)) {
+                if (listaDatosAdministradores.get(i).contains(nombreAdministrador)
+                        &&listaDatosAdministradores.get(i).contains(apellidoAdministrador)) {
                     datosAdministrador = listaDatosAdministradores.get(i);
                 }
             }
@@ -73,7 +74,8 @@ public class Administrador {
             String texto = "";
             List<String> listaDatosAdministradores = Archivo.leerArchivoComoListaString(rutaDatosAdministradores);
             for (int i = 0; i < listaDatosAdministradores.size(); i++) {
-                if (listaDatosAdministradores.get(i).contains(nombreAdministrador + apellidoAdministrador)) {
+                if (listaDatosAdministradores.get(i).contains(nombreAdministrador)
+                        &&listaDatosAdministradores.get(i).contains(apellidoAdministrador)) {
                     String[] lineaAntigua;
                     lineaAntigua = listaDatosAdministradores.get(i).split(",");
                     lineaAntigua[2] = contrasenaNueva;
@@ -96,7 +98,8 @@ public class Administrador {
 
             List<String> listaDatosAdministradores = Archivo.leerArchivoComoListaString(rutaDatosAdministradores);
             for (int i = 0; i < listaDatosAdministradores.size(); i++) {
-                if (listaDatosAdministradores.get(i).contains(nombreAdministrador + apellidoAdministrador)) {
+                if (listaDatosAdministradores.get(i).contains(nombreAdministrador)
+                        &&listaDatosAdministradores.get(i).contains(apellidoAdministrador)) {
                     listaDatosAdministradores.remove(i);
                 }
             }

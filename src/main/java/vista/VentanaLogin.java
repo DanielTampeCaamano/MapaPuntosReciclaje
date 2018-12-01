@@ -25,6 +25,7 @@ public class VentanaLogin extends JFrame implements ActionListener {
     private JLabel textoUsuario;
     private JLabel textoContraseña;
     private JButton botonIngresar;
+    private JButton botonCancelar;
 
     public VentanaLogin() {
         iniciarComponente();
@@ -50,12 +51,15 @@ public class VentanaLogin extends JFrame implements ActionListener {
         this.textFieldContraseña.setBounds(130, 100, 150, 20);
         this.botonIngresar = new JButton("Ingresar");
         this.botonIngresar.addActionListener(this);
+        this.botonCancelar=new JButton("Cancelar");
+        this.botonCancelar.addActionListener(this);
 
         contentpane.add(this.textoUsuario);
         contentpane.add(this.textFieldUsuario);
         contentpane.add(this.textoContraseña);
         contentpane.add(this.textFieldContraseña);
         contentpane.add(this.botonIngresar);
+        contentpane.add(this.botonCancelar);
 
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
@@ -64,6 +68,10 @@ public class VentanaLogin extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent evento) {
         if (this.botonIngresar == evento.getSource()) {
             VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(2);
+            ventanaPrincipal.setVisible(true);
+            this.dispose();
+        }else if(this.botonCancelar==evento.getSource()){
+            VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(1);
             ventanaPrincipal.setVisible(true);
             this.dispose();
         }

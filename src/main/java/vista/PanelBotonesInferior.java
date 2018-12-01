@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package vista;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -78,6 +77,7 @@ public class PanelBotonesInferior extends JPanel implements ActionListener {
         if (this.botonIniciarSesion == evento.getSource()) {
             this.ventanaLogin = new VentanaLogin();
             this.ventanaLogin.setVisible(true);
+            this.getTopLevelAncestor().setVisible(false);
         } else if (this.botonDesconectar == evento.getSource()) {
             this.botonAgregarAdministrador.setVisible(false);
             this.botonAgregarPuntoReciclaje.setVisible(false);
