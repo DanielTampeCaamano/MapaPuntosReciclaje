@@ -32,6 +32,7 @@ public class MapsController implements Initializable, MapComponentInitializedLis
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        mapView.setKey("AIzaSyCX8GgArvBnK-lnUJs8oJAOU-_QmV0v_74");
         mapView.addMapInializedListener(this);
     }
 
