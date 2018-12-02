@@ -17,6 +17,7 @@ public class VentanaBusquedaPersonalizada extends JFrame {
     public VentanaBusquedaPersonalizada() {
         iniciarComponente();
     }
+    
 
     private void iniciarComponente() {
         

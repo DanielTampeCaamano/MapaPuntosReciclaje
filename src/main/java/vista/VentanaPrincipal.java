@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package vista;
-import java.awt.Container;
 import java.awt.BorderLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
