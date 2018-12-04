@@ -86,7 +86,7 @@ class PanelResultados extends JPanel implements ActionListener {
             Stage stage = new Stage();
             Parent root = null;
             try {
-                root = FXMLLoader.load(getClass().getResource("/FXML1.fxml"));
+                root = FXMLLoader.load(getClass().getResource("/fxml/MapaVentanaPrincipal.fxml"));
             } catch (IOException ex) {
                 Logger.getLogger(PanelResultados.class.getName()).log(Level.SEVERE, null, ex);
             }

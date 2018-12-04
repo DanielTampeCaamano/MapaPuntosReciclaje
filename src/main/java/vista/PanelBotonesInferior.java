@@ -69,7 +69,6 @@ public class PanelBotonesInferior extends JPanel implements ActionListener {
                 this.add(this.botonDesconectar);
                 break;
         }
-
     }
 
     @Override

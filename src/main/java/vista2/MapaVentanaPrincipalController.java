@@ -1,13 +1,10 @@
 package vista2;
 
-
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
 import com.lynden.gmapsfx.javascript.object.Animation;
@@ -24,17 +21,41 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.layout.AnchorPane;
 
-public class MapsController implements Initializable, MapComponentInitializedListener {
+public class MapaVentanaPrincipalController implements Initializable, MapComponentInitializedListener {
 
-    @FXML
-    private Button button;
 
     @FXML
     private GoogleMapView mapView;
 
     private GoogleMap map;
-    
+    @FXML
+    private MenuBar menuBar;
+    @FXML
+    private Menu menu;
+    @FXML
+    private MenuItem menuItemVidrio;
+    @FXML
+    private MenuItem menuItemMetal;
+    @FXML
+    private MenuItem menuItemPapel;
+    @FXML
+    private MenuItem menuItemPlastico;
+    @FXML
+    private MenuItem menuItemBateriaPila;
+    @FXML
+    private Button botonIniciarSesion;
+    @FXML
+    private Button botonEditarAdministradores;
+    @FXML
+    private Button botonEditarPuntosReciclaje;
+    @FXML
+    private Button botonBusquedaPersonalizada;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         mapView.setKey("AIzaSyCX8GgArvBnK-lnUJs8oJAOU-_QmV0v_74");
@@ -43,7 +64,7 @@ public class MapsController implements Initializable, MapComponentInitializedLis
 
     @Override
     public void mapInitialized() {
-        LatLong joeSmithLocation = new LatLong(-38.7320304,-72.5970569);
+        LatLong joeSmithLocation = new LatLong(-38.7320304, -72.5970569);
 //    LatLong joshAndersonLocation = new LatLong(47.6297, -122.3431);
 //    LatLong bobUnderwoodLocation = new LatLong(47.6397, -122.3031);
 //    LatLong tomChoiceLocation = new LatLong(47.6497, -122.3325);
@@ -52,7 +73,7 @@ public class MapsController implements Initializable, MapComponentInitializedLis
         //Set the initial properties of the map.
         MapOptions mapOptions = new MapOptions();
 
-        mapOptions.center(new LatLong(-38.7320304,-72.5970569))
+        mapOptions.center(new LatLong(-38.7320304, -72.5970569))
                 .mapType(MapTypeIdEnum.ROADMAP)
                 .overviewMapControl(false)
                 .mapTypeControl(true)
@@ -65,8 +86,8 @@ public class MapsController implements Initializable, MapComponentInitializedLis
 
         map = mapView.createMap(mapOptions);
         //Add markers to the map
-        MarkerOptions markerOptions1 = new MarkerOptions();
-        markerOptions1.position(joeSmithLocation).animation(Animation.BOUNCE);
+//        MarkerOptions markerOptions1 = new MarkerOptions();
+//        markerOptions1.position(joeSmithLocation).animation(Animation.BOUNCE);
 
 //        MarkerOptions markerOptions2 = new MarkerOptions();
 //        markerOptions2.position(joshAndersonLocation);
@@ -79,23 +100,20 @@ public class MapsController implements Initializable, MapComponentInitializedLis
 //
 //        MarkerOptions markerOptions5 = new MarkerOptions();
 //        markerOptions5.position(fredWilkieLocation);
-
-        Marker joeSmithMarker = new Marker(markerOptions1);
+//        Marker joeSmithMarker = new Marker(markerOptions1);
 //        Marker joshAndersonMarker = new Marker(markerOptions2);
 //        Marker bobUnderwoodMarker = new Marker(markerOptions3);
 //        Marker tomChoiceMarker = new Marker(markerOptions4);
 //        Marker fredWilkieMarker = new Marker(markerOptions5);
-
-        map.addMarker(joeSmithMarker);
+        //map.addMarker(joeSmithMarker);
 //        map.addMarker(joshAndersonMarker);
 //        map.addMarker(bobUnderwoodMarker);
 //        map.addMarker(tomChoiceMarker);
 //        map.addMarker(fredWilkieMarker);
-
-        InfoWindowOptions infoWindowOptions1 = new InfoWindowOptions();
-        infoWindowOptions1.content("<h2>Plaza Anibal Pinto</h2>"
-                + "Current Location: Safeway<br>"
-                + "ETA: 45 minutes");
+//        InfoWindowOptions infoWindowOptions1 = new InfoWindowOptions();
+//        infoWindowOptions1.content("<h2>Plaza Anibal Pinto</h2>"
+//                + "Current Location: Safeway<br>"
+//                + "ETA: 45 minutes");
 //        InfoWindowOptions infoWindowOptions2 = new InfoWindowOptions();
 //        infoWindowOptions2.content("<h2>Fred Wilkie</h2>"
 //                + "Current Location: Safeway<br>"
@@ -112,9 +130,8 @@ public class MapsController implements Initializable, MapComponentInitializedLis
 //        infoWindowOptions5.content("<h2>Fred Wilkie</h2>"
 //                + "Current Location: Safeway<br>"
 //                + "ETA: 45 minutes");
-
-        InfoWindow joeSmithInfoWindow = new InfoWindow(infoWindowOptions1);
-        joeSmithInfoWindow.open(map, joeSmithMarker);
+//        InfoWindow joeSmithInfoWindow = new InfoWindow(infoWindowOptions1);
+//        joeSmithInfoWindow.open(map, joeSmithMarker);
 //        InfoWindow joshAndersonInfoWindow = new InfoWindow(infoWindowOptions5);
 //        joshAndersonInfoWindow.open(map, joshAndersonMarker);
 //        InfoWindow bobUnderwoodInfoWindow = new InfoWindow(infoWindowOptions5);
@@ -123,6 +140,5 @@ public class MapsController implements Initializable, MapComponentInitializedLis
 //        tomChoiceInfoWindow.open(map, tomChoiceMarker);
 //        InfoWindow fredWilkeInfoWindow = new InfoWindow(infoWindowOptions5);
 //        fredWilkeInfoWindow.open(map, fredWilkieMarker);
-
     }
 }
