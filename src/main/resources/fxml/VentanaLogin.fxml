@@ -9,11 +9,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista2.VentanaLoginController">
+<AnchorPane id="AnchorPane" prefHeight="410.0" prefWidth="610.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista2.VentanaLoginController">
    <children>
-      <ImageView fx:id="ImagenFondo" fitHeight="402.0" fitWidth="607.0" pickOnBounds="true">
+      <ImageView fx:id="ImagenFondo" fitHeight="422.0" fitWidth="621.0" layoutX="-5.0" layoutY="-3.0" pickOnBounds="true">
          <image>
-            <Image url="@../../../../imagenes/MapaGeneral.jpg" />
+            <Image url="@/imagenes/MapaGeneral.jpg" />
          </image>
       </ImageView>
       <Label fx:id="labelNombre" layoutX="87.0" layoutY="100.0" text="Nombre">

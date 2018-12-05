@@ -10,13 +10,11 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista2.VentanaEditarAdministradoresController">
-    <stylesheets>
-        <URL value="@/styles/ventanaeditaradministradores.css" />
-    </stylesheets>
+    
    <children>
       <ImageView fx:id="imagenFondo" fitHeight="400.0" fitWidth="600.0" opacity="0.63" pickOnBounds="true">
          <image>
-            <Image url="@../../../../imagenes/MapaGeneral.jpg" />
+            <Image url="@/imagenes/MapaGeneral.jpg" />
          </image>
       </ImageView>
       <Text fx:id="textoTitulo" layoutX="193.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editar Administradores" underline="true">

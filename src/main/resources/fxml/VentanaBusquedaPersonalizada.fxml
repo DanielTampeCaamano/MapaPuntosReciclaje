@@ -11,19 +11,17 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista2.VentanaBusquedaPersonalizadaController">
-    <stylesheets>
-        <URL value="@/styles/ventanabusquedapersonalizada.css" />
-    </stylesheets>
+    
    <children>
       <ImageView fitHeight="400.0" fitWidth="632.0" nodeOrientation="INHERIT" opacity="0.43" pickOnBounds="true">
          <image>
-            <Image url="@../../../../imagenes/MapaGeneral.jpg" />
+            <Image url="@/imagenes/MapaGeneral.jpg" />
          </image>
          <viewport>
             <Rectangle2D />
          </viewport>
       </ImageView>
-      <TextField id="campoTextoDireccion" fx:id="campoTextoDireccion" layoutX="288.0" layoutY="71.0" prefHeight="34.0" prefWidth="288.0" promptText="Ej: Avenida Alemania 930" />
+      <TextField id="campoTextoDireccion" fx:id="campoTextoDireccion" layoutX="220.0" layoutY="71.0" prefHeight="34.0" prefWidth="356.0" promptText="Ej: Avenida Alemania 930" />
       <TextField id="campoTextoLatitud" fx:id="campoTextoLatitud" layoutX="151.0" layoutY="142.0" prefHeight="34.0" prefWidth="149.0" promptText="EJ:  12.3456" />
       <TextField id="campoTextoLongitud" fx:id="campoTextoLongitud" layoutX="438.0" layoutY="142.0" prefHeight="34.0" prefWidth="149.0" promptText="Ej:  -123.4567" />
       <Text layoutX="195.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Busqueda Personalizada" underline="true">
@@ -71,12 +69,12 @@
       </CheckBox>
       <Button id="botonBuscar" fx:id="botonBuscar" layoutX="163.0" layoutY="263.0" mnemonicParsing="false" text="Buscar">
          <font>
-            <Font name="System Bold" size="17.0" />
+            <Font name="System Bold" size="27.0" />
          </font>
       </Button>
-      <Button id="botonVolver" fx:id="botonVolver" layoutX="413.0" layoutY="263.0" mnemonicParsing="false" text="Volver">
+      <Button id="botonVolver" fx:id="botonVolver" layoutX="353.0" layoutY="263.0" mnemonicParsing="false" text="Volver">
          <font>
-            <Font name="System Bold" size="17.0" />
+            <Font name="System Bold" size="27.0" />
          </font>
       </Button>
    </children>

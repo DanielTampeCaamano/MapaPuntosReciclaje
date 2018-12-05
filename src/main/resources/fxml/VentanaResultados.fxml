@@ -1,11 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.media.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista2.VentanaResultadosController">
-    
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista2.VentanaResultadosController">
+   <children>
+       <ImageView fitHeight="400.0" fitWidth="600.0" nodeOrientation="INHERIT" opacity="0.43" pickOnBounds="true">
+         <image>
+            <Image url="@/imagenes/MapaGeneral.jpg" />
+         </image>
+         <viewport>
+            <Rectangle2D />
+         </viewport>
+      </ImageView>
+      <TableView fx:id="vistaTabla" opacity="0.94" prefHeight="400.0" prefWidth="497.0">
+        <columns>
+          <TableColumn fx:id="tablaColumnaResultados" prefWidth="496.0" text="Resultados" />
+        </columns>
+      </TableView>
+      <Button layoutX="503.0" layoutY="171.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="91.0" text="Mostrar Mapa" />
+   </children>
 </AnchorPane>

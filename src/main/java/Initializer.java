@@ -49,10 +49,10 @@ public class Initializer extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/MapaVentanaPrincipal.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/MapaVentanaPrincipal1.fxml"));
 
         stage.setTitle("Maps Test");
-        stage.setScene(new Scene(root, 800, 700));
+        stage.setScene(new Scene(root, 800, 690));
         stage.setResizable(false);
         stage.show();
     }

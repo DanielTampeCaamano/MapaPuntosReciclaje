@@ -10,13 +10,11 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista2.VentanaEditarPuntosReciclajeController">
-    <stylesheets>
-        <URL value="@/styles/ventanaeditarpuntosreciclaje.css" />
-    </stylesheets>
+    
    <children>
       <ImageView id="ImagenFondo" fitHeight="400.0" fitWidth="600.0" opacity="0.48" pickOnBounds="true">
          <image>
-            <Image url="@../../../../imagenes/MapaGeneral.jpg" />
+            <Image url="@/imagenes/MapaGeneral.jpg" />
          </image>
       </ImageView>
       <TextField id="campoTextoDireccion" fx:id="campoTextoDireccion" layoutX="218.0" layoutY="60.0" prefHeight="25.0" prefWidth="339.0" promptText="Ej: Avenida Alemania 034" />
