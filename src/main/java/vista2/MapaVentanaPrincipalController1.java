@@ -21,10 +21,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -89,7 +91,6 @@ public class MapaVentanaPrincipalController1 implements Initializable, MapCompon
                 .streetViewControl(false)
                 .zoomControl(true)
                 .zoom(13);
-
         map = mapView.createMap(mapOptions);
         botonIniciarSesion.setOnMouseClicked((new EventHandler<MouseEvent>() {
             @Override
@@ -102,8 +103,10 @@ public class MapaVentanaPrincipalController1 implements Initializable, MapCompon
                     ventana.setTitle("Login");
                     ventana.setResizable(false);
                     ventana.show();
+                    Stage ventanaActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    ventanaActual.close();
                 } catch (IOException ex) {
-                    Logger.getLogger(MapaVentanaPrincipalController1.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(MapaVentanaPrincipalController2.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }));
@@ -127,8 +130,46 @@ public class MapaVentanaPrincipalController1 implements Initializable, MapCompon
                     ventana.setTitle("Busqueda Personalizada");
                     ventana.setResizable(false);
                     ventana.show();
+                    Stage ventanaActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    ventanaActual.close();
                 } catch (IOException ex) {
-                    Logger.getLogger(MapaVentanaPrincipalController1.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(MapaVentanaPrincipalController2.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }));
+        botonEditarAdministradores.setOnMouseClicked((new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    Parent root;
+                    root = FXMLLoader.load(getClass().getResource("/fxml/VentanaEditarAdministradoresController.fxml"));
+                    Stage ventana = new Stage();
+                    ventana.setScene(new Scene(root));
+                    ventana.setTitle("Busqueda Personalizada");
+                    ventana.setResizable(false);
+                    ventana.show();
+                    Stage ventanaActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    ventanaActual.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(MapaVentanaPrincipalController2.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }));
+        botonEditarPuntosReciclaje.setOnMouseClicked((new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    Parent root;
+                    root = FXMLLoader.load(getClass().getResource("/fxml/VentanaEditarPuntosReciclajeController.fxml"));
+                    Stage ventana = new Stage();
+                    ventana.setScene(new Scene(root));
+                    ventana.setTitle("Busqueda Personalizada");
+                    ventana.setResizable(false);
+                    ventana.show();
+                    Stage ventanaActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    ventanaActual.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(MapaVentanaPrincipalController2.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }));

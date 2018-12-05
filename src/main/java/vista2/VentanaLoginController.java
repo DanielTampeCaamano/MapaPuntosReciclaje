@@ -5,17 +5,25 @@
  */
 package vista2;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -54,7 +62,19 @@ public class VentanaLoginController implements Initializable {
         botonIngresar.setOnMouseClicked((new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
-                
+                try {
+                    Parent root;
+                    root = FXMLLoader.load(getClass().getResource("/fxml/MapaVentanaPrincipal2.fxml"));
+                    Stage ventana = new Stage();
+                    ventana.setScene(new Scene(root));
+                    ventana.setTitle("Busqueda Personalizada");
+                    ventana.setResizable(false);
+                    ventana.show();
+                    Stage ventanaActual=(Stage)((Node)event.getSource()).getScene().getWindow();
+                    ventanaActual.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(MapaVentanaPrincipalController1.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }));
     }    
