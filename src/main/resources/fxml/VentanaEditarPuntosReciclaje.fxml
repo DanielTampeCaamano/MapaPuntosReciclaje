@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista2.VentanaEditarPuntosReciclajeController">
+    
+   <children>
+      <ImageView id="ImagenFondo" fitHeight="400.0" fitWidth="600.0" opacity="0.48" pickOnBounds="true">
+         <image>
+            <Image url="@/imagenes/MapaGeneral.jpg" />
+         </image>
+      </ImageView>
+      <TextField id="campoTextoDireccion" fx:id="campoTextoDireccion" layoutX="218.0" layoutY="60.0" prefHeight="25.0" prefWidth="339.0" promptText="Ej: Avenida Alemania 034" />
+      <TextField id="campoTextoLatitud" fx:id="campoTextoLatitud" layoutX="153.0" layoutY="124.0" promptText="Ej: 38.7320304" />
+      <TextField id="campoTextoLongitud" fx:id="campoTextoLongitud" layoutX="424.0" layoutY="124.0" promptText="Ej: -72.5970569" />
+      <TextField id="campoTextoNumeroVisitas" fx:id="campoTextoNumeroVisitas" layoutX="153.0" layoutY="188.0" promptText="Ej: 300" />
+      <TextField id="campoTextoCantidadReciclada" fx:id="campoTextoCantidadReciclada" layoutX="424.0" layoutY="188.0" promptText="Ej: 46.7 (en Kg)" />
+      <Text fx:id="texto" layoutX="177.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editar Puntos de Reciclaje" underline="true">
+         <font>
+            <Font name="Arial Black" size="17.0" />
+         </font>
+      </Text>
+      <Label fx:id="labelDireccion" layoutX="95.0" layoutY="64.0" text="Direcion">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelLatitud" layoutX="67.0" layoutY="128.0" text="Latitud">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelLongitud" layoutX="333.0" layoutY="128.0" text="Longitud">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelNumeroVisitas" layoutX="20.0" layoutY="192.0" text="Numero de Visitas">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelCantidadReciclada" layoutX="308.0" layoutY="192.0" prefHeight="17.0" prefWidth="111.0" text="Cant. Reciclada">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="14.0" />
+         </font>
+      </Label>
+      <Button id="botonEliminar" fx:id="botonEliminar" layoutX="350.0" layoutY="259.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="93.0" text="Eliminar">
+         <font>
+            <Font name="Arial" size="17.0" />
+         </font></Button>
+      <Button id="botonEditar" fx:id="botonEditar" layoutX="458.0" layoutY="259.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="93.0" text="Editar">
+         <font>
+            <Font name="Arial" size="17.0" />
+         </font></Button>
+      <Button id="botonAgregar" fx:id="botonAgregar" layoutX="237.0" layoutY="259.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="93.0" text="Agregar">
+         <font>
+            <Font name="Arial" size="17.0" />
+         </font></Button>
+      <Button id="botonVolver" fx:id="botonVolver" layoutX="237.0" layoutY="305.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="314.0" text="Volver">
+         <font>
+            <Font name="Arial" size="25.0" />
+         </font>
+      </Button>
+      <CheckBox id="checkBoxVidrio" fx:id="checkBoxVidrio" layoutX="109.0" layoutY="259.0" mnemonicParsing="false" text="Vidrio">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font></CheckBox>
+      <Label fx:id="labelCategorias" layoutX="111.0" layoutY="234.0" text="Categorias">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="13.0" />
+         </font>
+      </Label>
+      <CheckBox id="checkBoxMetal" fx:id="checkBoxMetal" layoutX="109.0" layoutY="283.0" mnemonicParsing="false" text="Metal">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font></CheckBox>
+      <CheckBox id="checkBoxPapel" fx:id="checkBoxPapel" layoutX="109.0" layoutY="306.0" mnemonicParsing="false" text="Papel">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font></CheckBox>
+      <CheckBox id="checkBoxPlastico" fx:id="checkBoxPlastico" layoutX="109.0" layoutY="331.0" mnemonicParsing="false" text="Plastico">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font></CheckBox>
+      <CheckBox id="checkBoxBateriaPila" fx:id="checkBoxBateriaPila" layoutX="109.0" layoutY="355.0" mnemonicParsing="false" text="Bateria/Pila">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font></CheckBox>
+   </children>
+</AnchorPane>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista2.VentanaEditarAdministradoresController">
+    
+   <children>
+      <ImageView fx:id="imagenFondo" fitHeight="400.0" fitWidth="600.0" opacity="0.63" pickOnBounds="true">
+         <image>
+            <Image url="@/imagenes/MapaGeneral.jpg" />
+         </image>
+      </ImageView>
+      <Text fx:id="textoTitulo" layoutX="193.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editar Administradores" underline="true">
+         <font>
+            <Font name="Arial Black" size="17.0" />
+         </font>
+      </Text>
+      <TextField fx:id="campoTextoNombre" layoutX="230.0" layoutY="85.0" prefHeight="25.0" prefWidth="338.0" />
+      <TextField fx:id="campoTextoApellido" layoutX="230.0" layoutY="159.0" prefHeight="25.0" prefWidth="338.0" />
+      <TextField fx:id="campoTextoContrasena" layoutX="230.0" layoutY="228.0" prefHeight="25.0" prefWidth="338.0" />
+      <Label fx:id="labelNombre" layoutX="100.0" layoutY="89.0" text="Nombre" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font></Label>
+      <Label fx:id="labelApellido" layoutX="100.0" layoutY="163.0" text="Apellido" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font></Label>
+      <Label fx:id="labelContrasena" layoutX="100.0" layoutY="232.0" text="Contraseña" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font></Label>
+      <Button fx:id="botonAgregar" layoutX="186.0" layoutY="289.0" mnemonicParsing="false" text="Agregar">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="botonEditar" layoutX="272.0" layoutY="289.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="65.0" text="Editar">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="botonBorrar" layoutX="343.0" layoutY="289.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="71.0" text="Borrar">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="botonVolver" layoutX="186.0" layoutY="331.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="228.0" text="Volver">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="20.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

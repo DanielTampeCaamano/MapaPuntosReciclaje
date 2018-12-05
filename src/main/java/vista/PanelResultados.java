@@ -8,7 +8,14 @@ package vista;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
@@ -24,15 +31,16 @@ class PanelResultados extends JPanel implements ActionListener {
     private JButton resultado1;
 
     PanelResultados(ArrayList<JCheckBox> listaCheckeados) {
-        inicializarComponente(listaCheckeados,null);
+        inicializarComponente(listaCheckeados, null);
     }
 
     PanelResultados(String direccion) {
-        inicializarComponente(null,direccion);    }
+        inicializarComponente(null, direccion);
+    }
 
-    private void inicializarComponente(ArrayList<JCheckBox> listaCheckeados,String direccion) {
-        
-        filas=1;
+    private void inicializarComponente(ArrayList<JCheckBox> listaCheckeados, String direccion) {
+
+        filas = 1;
         GridLayout distribucion = new GridLayout(this.filas, 0);
         this.setLayout(distribucion);
         /*for (int i = 0; i < filas; i++) {
@@ -72,10 +80,20 @@ class PanelResultados extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent evento) {
         if (this.resultado1 == evento.getSource()) {
-            String[] args = null;
+            //String[] args = null;
             //VentanaMapa ventanaMapa = new VentanaMapa();
             //ventanaMapa.setVisible(true);
-            Launcher.main(args);
+            Stage stage = new Stage();
+            Parent root = null;
+            try {
+                root = FXMLLoader.load(getClass().getResource("/fxml/MapaVentanaPrincipal.fxml"));
+            } catch (IOException ex) {
+                Logger.getLogger(PanelResultados.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            stage.setTitle("Maps Test");
+            stage.setScene(new Scene(root, 800, 700));
+            stage.show();
+
         }/* else if (this.resultado2 == evento.getSource()) {
             VentanaMapa ventanaMapa = new VentanaMapa();
             ventanaMapa.setVisible(true);

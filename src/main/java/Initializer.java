@@ -1,4 +1,4 @@
-package vista;
+
 
 /*
  * Copyright (c) 2011, 2012 Oracle and/or its affiliates.
@@ -41,18 +41,19 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Initializer extends Application {
-    
+
     public static void main(String[] args) {
         Application.launch(Initializer.class, args);
     }
-    
+
     @Override
     public void start(Stage stage) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("/FXML1.fxml"));
-        
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/MapaVentanaPrincipal1.fxml"));
+
         stage.setTitle("Maps Test");
-        stage.setScene(new Scene(root, 800, 700));
+        stage.setScene(new Scene(root, 800, 690));
+        stage.setResizable(false);
         stage.show();
     }
 }
