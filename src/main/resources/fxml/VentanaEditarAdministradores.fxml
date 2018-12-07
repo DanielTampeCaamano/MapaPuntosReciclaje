@@ -25,15 +25,15 @@
       <TextField fx:id="campoTextoNombre" layoutX="230.0" layoutY="85.0" prefHeight="25.0" prefWidth="338.0" />
       <TextField fx:id="campoTextoApellido" layoutX="230.0" layoutY="159.0" prefHeight="25.0" prefWidth="338.0" />
       <TextField fx:id="campoTextoContrasena" layoutX="230.0" layoutY="228.0" prefHeight="25.0" prefWidth="338.0" />
-      <Label fx:id="labelNombre" layoutX="100.0" layoutY="89.0" text="Nombre" textAlignment="CENTER">
+      <Label fx:id="labelNombre" layoutX="100.0" layoutY="89.0" text="(*)(**)Nombre" textAlignment="CENTER">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font></Label>
-      <Label fx:id="labelApellido" layoutX="100.0" layoutY="163.0" text="Apellido" textAlignment="CENTER">
+      <Label fx:id="labelApellido" layoutX="100.0" layoutY="163.0" text="(*)(**)Apellido" textAlignment="CENTER">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font></Label>
-      <Label fx:id="labelContrasena" layoutX="100.0" layoutY="232.0" text="Contraseña" textAlignment="CENTER">
+      <Label fx:id="labelContrasena" layoutX="100.0" layoutY="232.0" text="(*)Contraseña" textAlignment="CENTER">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font></Label>
@@ -57,5 +57,7 @@
             <Font name="Arial Rounded MT Bold" size="20.0" />
          </font>
       </Button>
+      <Label layoutX="25.0" layoutY="308.0" text="*campo obligatorio(agregar)" />
+      <Label layoutX="3.0" layoutY="331.0" text="**campo obligatorio(edit/borrar)" />
    </children>
 </AnchorPane>

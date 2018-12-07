@@ -47,7 +47,7 @@
                 </Menu>
             </menus>
         </MenuBar>
-      <Button id="botonBusquedaPersonalizada" fx:id="botonBusquedaPersonalizada" layoutX="277.0" layoutY="29.0" mnemonicParsing="false" opacity="0.93" prefHeight="40.0" prefWidth="418.0" text="Busqueda Personalizada" textAlignment="CENTER">
+      <Button id="botonBusquedaPersonalizada" fx:id="botonBusquedaPersonalizada" layoutX="277.0" layoutY="14.0" mnemonicParsing="false" opacity="0.93" prefHeight="40.0" prefWidth="418.0" text="Busqueda Personalizada" textAlignment="CENTER">
          <font>
             <Font name="Open Sans" size="18.0" />
          </font>

@@ -38,4 +38,5 @@ public class VentanaResultadosController implements Initializable {
     public void inicializarComponentes(){
     
     }
+    
 }

@@ -16,17 +16,17 @@
             <Image url="@/imagenes/MapaGeneral.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="labelNombre" layoutX="87.0" layoutY="100.0" text="Nombre">
+      <Label fx:id="labelNombre" layoutX="87.0" layoutY="100.0" text="(*)Nombre">
          <font>
             <Font name="Arial Rounded MT Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="labelApellido" layoutX="87.0" layoutY="147.0" text="Apellido">
+      <Label fx:id="labelApellido" layoutX="87.0" layoutY="147.0" text="(*)Apellido">
          <font>
             <Font name="Arial Rounded MT Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="labelContrasena" layoutX="87.0" layoutY="192.0" text="Contraseña">
+      <Label fx:id="labelContrasena" layoutX="87.0" layoutY="192.0" text="(*)Contraseña">
          <font>
             <Font name="Arial Rounded MT Bold" size="16.0" />
          </font>
@@ -49,5 +49,6 @@
             <Font name="Arial Rounded MT Bold" size="26.0" />
          </font>
       </Button>
+      <Label layoutX="67.0" layoutY="353.0" text="*campo obligatorio" />
    </children>
 </AnchorPane>
