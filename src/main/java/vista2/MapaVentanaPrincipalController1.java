@@ -21,7 +21,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -142,14 +141,12 @@ public class MapaVentanaPrincipalController1 implements Initializable, MapCompon
             public void handle(MouseEvent event) {
                 try {
                     Parent root;
-                    root = FXMLLoader.load(getClass().getResource("/fxml/VentanaEditarAdministradoresController.fxml"));
+                    root = FXMLLoader.load(getClass().getResource("/fxml/VentanaEditarAdministradores.fxml"));
                     Stage ventana = new Stage();
                     ventana.setScene(new Scene(root));
-                    ventana.setTitle("Busqueda Personalizada");
+                    ventana.setTitle("Editar Administradores...");
                     ventana.setResizable(false);
                     ventana.show();
-                    Stage ventanaActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    ventanaActual.close();
                 } catch (IOException ex) {
                     Logger.getLogger(MapaVentanaPrincipalController2.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -160,14 +157,12 @@ public class MapaVentanaPrincipalController1 implements Initializable, MapCompon
             public void handle(MouseEvent event) {
                 try {
                     Parent root;
-                    root = FXMLLoader.load(getClass().getResource("/fxml/VentanaEditarPuntosReciclajeController.fxml"));
+                    root = FXMLLoader.load(getClass().getResource("/fxml/VentanaEditarPuntosReciclaje.fxml"));
                     Stage ventana = new Stage();
                     ventana.setScene(new Scene(root));
-                    ventana.setTitle("Busqueda Personalizada");
+                    ventana.setTitle("Editar Puntos de Riciclaje...");
                     ventana.setResizable(false);
                     ventana.show();
-                    Stage ventanaActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    ventanaActual.close();
                 } catch (IOException ex) {
                     Logger.getLogger(MapaVentanaPrincipalController2.class.getName()).log(Level.SEVERE, null, ex);
                 }

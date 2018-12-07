@@ -10,12 +10,15 @@ import java.util.ResourceBundle;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import modelo.Administrador;
 
 /**
  * FXML Controller class
@@ -55,12 +58,40 @@ public class VentanaEditarAdministradoresController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        botonAgregar.setOnMouseClicked((new EventHandler<MouseEvent>(){
+        botonAgregar.setOnMouseClicked((new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-
+                Administrador admin = new Administrador(campoTextoNombre.getText(),
+                        campoTextoApellido.getText(),
+                        campoTextoContrasena.getText());
+                Administrador.guardarDatosAdministrador(admin);
             }
         }));
-    }    
-    
+        botonEditar.setOnMouseClicked((new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Administrador admin = new Administrador(campoTextoNombre.getText(),
+                        campoTextoApellido.getText(),
+                        campoTextoContrasena.getText());
+                Administrador.editarDatosAdministradorContrasenaNueva(admin);
+            }
+        }));
+        botonBorrar.setOnMouseClicked((new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Administrador admin = new Administrador(campoTextoNombre.getText(),
+                        campoTextoApellido.getText(),
+                        campoTextoContrasena.getText());
+                Administrador.borrarDatosAdministrador(admin);
+            }
+        }));
+        botonVolver.setOnMouseClicked((new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Stage ventanaActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                ventanaActual.close();
+            }
+        }));
+    }
+
 }

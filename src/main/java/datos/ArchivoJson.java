@@ -7,6 +7,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.lang.reflect.Type;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 import modelo.Administrador;
 import modelo.PuntoReciclaje;
@@ -18,7 +20,7 @@ public class ArchivoJson {
     private static final String RUTADATOSPUNTOSRECICLAJE = "datosadministradores/";
     private static final String NOMBREDATOSPUNTOSRECICLAJE = "adminstradores.json";
 
-    public static boolean almacenarADministradores(ArrayList<Administrador> administradores) {
+    public static boolean almacenarAdministradores(ArrayList<Administrador> administradores) {
         boolean respuesta = false;
         Type listType = new TypeToken<List<Administrador>>() {
         }.getType();
@@ -76,5 +78,11 @@ public class ArchivoJson {
                 }.getType());
         return persona;
 
+    }
+
+    public static boolean existeArchivo(String rutaArchivo) {
+        boolean verificador;
+        verificador = Files.exists(Paths.get(rutaArchivo));
+        return verificador;
     }
 }

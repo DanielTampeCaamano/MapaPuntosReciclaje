@@ -27,17 +27,17 @@
             <Font name="Arial Black" size="17.0" />
          </font>
       </Text>
-      <Label fx:id="labelDireccion" layoutX="95.0" layoutY="64.0" text="Direcion">
+      <Label fx:id="labelDireccion" layoutX="95.0" layoutY="64.0" text="*Direcion">
          <font>
             <Font name="Arial Rounded MT Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="labelLatitud" layoutX="67.0" layoutY="128.0" text="Latitud">
+      <Label fx:id="labelLatitud" layoutX="67.0" layoutY="128.0" text="*Latitud">
          <font>
             <Font name="Arial Rounded MT Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="labelLongitud" layoutX="333.0" layoutY="128.0" text="Longitud">
+      <Label fx:id="labelLongitud" layoutX="333.0" layoutY="128.0" text="*Longitud">
          <font>
             <Font name="Arial Rounded MT Bold" size="14.0" />
          </font>
@@ -73,7 +73,7 @@
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font></CheckBox>
-      <Label fx:id="labelCategorias" layoutX="111.0" layoutY="234.0" text="Categorias">
+      <Label fx:id="labelCategorias" layoutX="111.0" layoutY="234.0" text="**Categorias">
          <font>
             <Font name="Arial Rounded MT Bold" size="13.0" />
          </font>
@@ -94,5 +94,7 @@
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font></CheckBox>
+      <Label layoutX="443.0" layoutY="363.0" text="**al menos uno" />
+      <Label layoutX="317.0" layoutY="363.0" text="*campo obligatorio" />
    </children>
 </AnchorPane>

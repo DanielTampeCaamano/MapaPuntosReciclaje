@@ -1,19 +1,29 @@
 package modelo;
 
 import datos.Archivo;
+import datos.ArchivoJson;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Administrador {
 
     private String nombreAdministrador;
     private String apellidoAdministrador;
     private String contrasena;
-    private static String rutaDatosAdministradores= "datos/datosAdministradores/Administradores.txt";
+    private static final String RUTADATOSADMINISTRADORES = "datos/datosAdministradores/administradores.json";
 
     public Administrador(String nombreAdministrador, String apellidoAdministrador, String contrasena) {
         this.nombreAdministrador = nombreAdministrador;
         this.apellidoAdministrador = apellidoAdministrador;
         this.contrasena = contrasena;
+    }
+
+    public Administrador(String nombreAdministrador, String apellidoAdministrador) {
+        this.nombreAdministrador = nombreAdministrador;
+        this.apellidoAdministrador = apellidoAdministrador;
+        this.contrasena = "0";
     }
 
     public String getNombreAdministrador() {
@@ -22,6 +32,10 @@ public class Administrador {
 
     public String getApellidoAdministrador() {
         return apellidoAdministrador;
+    }
+
+    public String getContrasena() {
+        return contrasena;
     }
 
     public void setNombreAdministrador(String nombreAdministrador) {
@@ -36,32 +50,25 @@ public class Administrador {
         this.contrasena = contrasena;
     }
 
-    public static void guardarDatosAdministrador(String nombreAdministrador, String apellidoAdministrador, String contrasena) {
-        if (Archivo.existeArchivo(rutaDatosAdministradores)) {// Verifica si existe el archivo indicado en la ruta
-            List<String> listaDatosAdministradores=Archivo.leerArchivoComoListaString(rutaDatosAdministradores);// Se almacena los datos de los administradores en una Lista<String>, cada posicion de la lista equivale a una linea
-            String datosAdministrador;
-            String texto = "";
-            datosAdministrador = nombreAdministrador + "," + apellidoAdministrador + "," + contrasena;
-            listaDatosAdministradores.add(datosAdministrador);
-            for (int i = 0; i < listaDatosAdministradores.size(); i++) {
-                texto+=listaDatosAdministradores.get(i)+"\n";
-            }
-            Archivo.eliminarArchivo(rutaDatosAdministradores);
-            Archivo.crearArchivo(rutaDatosAdministradores, texto);
+    public static void guardarDatosAdministrador(Administrador adminIgresado) {
+        if (Archivo.existeArchivo(RUTADATOSADMINISTRADORES)) {// Verifica si existe el archivo indicado en la ruta
+            ArrayList<Administrador> listaDatosAdministradores = ArchivoJson.recurperarAdministradores();
+            listaDatosAdministradores.add(adminIgresado);
+            ArchivoJson.almacenarAdministradores(listaDatosAdministradores);
         } else {
-            String texto;
-            texto = nombreAdministrador + "," + apellidoAdministrador + "," + contrasena + "\n";
-            Archivo.crearArchivo(rutaDatosAdministradores, texto);
+            ArrayList<Administrador> listaDatosAdministradores = ArchivoJson.recurperarAdministradores();
+            listaDatosAdministradores.add(adminIgresado);
+            ArchivoJson.almacenarAdministradores(listaDatosAdministradores);
         }
     }
 
     public static String mostrarDatosAdministrador(String nombreAdministrador, String apellidoAdministrador) {
         String datosAdministrador = "";
-        if (Archivo.existeArchivo(rutaDatosAdministradores)) {
-            List<String> listaDatosAdministradores = Archivo.leerArchivoComoListaString(rutaDatosAdministradores);
+        if (Archivo.existeArchivo(RUTADATOSADMINISTRADORES)) {
+            List<String> listaDatosAdministradores = Archivo.leerArchivoComoListaString(RUTADATOSADMINISTRADORES);
             for (int i = 0; i < listaDatosAdministradores.size(); i++) {
                 if (listaDatosAdministradores.get(i).contains(nombreAdministrador)
-                        &&listaDatosAdministradores.get(i).contains(apellidoAdministrador)) {
+                        && listaDatosAdministradores.get(i).contains(apellidoAdministrador)) {
                     datosAdministrador = listaDatosAdministradores.get(i);
                 }
             }
@@ -69,55 +76,47 @@ public class Administrador {
         return datosAdministrador;
     }
 
-    public static void editarDatosAdministradorContrasenaNueva(String nombreAdministrador, String apellidoAdministrador, String contrasenaNueva) {
-        if (Archivo.existeArchivo(rutaDatosAdministradores)) {
-            String texto = "";
-            List<String> listaDatosAdministradores = Archivo.leerArchivoComoListaString(rutaDatosAdministradores);
-            for (int i = 0; i < listaDatosAdministradores.size(); i++) {
-                if (listaDatosAdministradores.get(i).contains(nombreAdministrador)
-                        &&listaDatosAdministradores.get(i).contains(apellidoAdministrador)) {
-                    String[] lineaAntigua;
-                    lineaAntigua = listaDatosAdministradores.get(i).split(",");
-                    lineaAntigua[2] = contrasenaNueva;
-                    String lineaNueva = lineaAntigua[0] + "," + lineaAntigua[1] + "," + lineaAntigua[2];
-                    listaDatosAdministradores.remove(i);
-                    listaDatosAdministradores.add(i, lineaNueva);
+    public static void editarDatosAdministradorContrasenaNueva(Administrador adminIngresado) {
+        if (Archivo.existeArchivo(RUTADATOSADMINISTRADORES)) {
+            ArrayList<Administrador> listaDatosAdministradores = ArchivoJson.recurperarAdministradores();
+            listaDatosAdministradores.stream().filter((Administrador x) -> {
+                if (x.getNombreAdministrador().equalsIgnoreCase(adminIngresado.getNombreAdministrador())
+                        && x.getApellidoAdministrador().equalsIgnoreCase(adminIngresado.getApellidoAdministrador())) {
+                    x.setContrasena(adminIngresado.getContrasena());
                 }
-            }
-            for (int i = 0; i < listaDatosAdministradores.size(); i++) {
-                texto += listaDatosAdministradores.get(i) + "\n";
-            }
-            Archivo.eliminarArchivo(rutaDatosAdministradores);
-            Archivo.crearArchivo(rutaDatosAdministradores, texto);
+                return false;
+            }).distinct().collect(Collectors.toList());
+            ArchivoJson.almacenarAdministradores(listaDatosAdministradores);
+        } else {
+            System.out.println("No existe el archivo en la ruta indicada, verifique que no haya un error...");
         }
+
     }
 
-    public static void borrarDatosAdministrador(String nombreAdministrador, String apellidoAdministrador) {
-        if (Archivo.existeArchivo(rutaDatosAdministradores)) {
-            String texto = "";
-
-            List<String> listaDatosAdministradores = Archivo.leerArchivoComoListaString(rutaDatosAdministradores);
-            for (int i = 0; i < listaDatosAdministradores.size(); i++) {
-                if (listaDatosAdministradores.get(i).contains(nombreAdministrador)
-                        &&listaDatosAdministradores.get(i).contains(apellidoAdministrador)) {
-                    listaDatosAdministradores.remove(i);
+    public static void borrarDatosAdministrador(Administrador adminIngresado) {
+        if (Archivo.existeArchivo(RUTADATOSADMINISTRADORES)) {
+            ArrayList<Administrador> listaDatosAdministradores = ArchivoJson.recurperarAdministradores();
+            listaDatosAdministradores.stream().filter((Administrador admnistrador) -> {
+                if (admnistrador.getNombreAdministrador().equalsIgnoreCase(adminIngresado.getNombreAdministrador())
+                        && admnistrador.getApellidoAdministrador().equalsIgnoreCase(adminIngresado.getApellidoAdministrador())) {
+                    listaDatosAdministradores.remove(admnistrador);
                 }
-            }
-            for (int i = 0; i < listaDatosAdministradores.size(); i++) {
-                texto += listaDatosAdministradores.get(i) + "\n";
-            }
-            Archivo.eliminarArchivo(rutaDatosAdministradores);
-            Archivo.crearArchivo(rutaDatosAdministradores, texto);
+                return false;
+            }).distinct().collect(Collectors.toList());
+            ArchivoJson.almacenarAdministradores(listaDatosAdministradores);
         } else {
             System.out.println("No existe el archivo en la ruta de destino...");
         }
     }
 
+//    public String toString() {
+//        String linea;
+//        linea = this.nombreAdministrador + "," + this.apellidoAdministrador + "," + this.contrasena + "\n";
+//        return linea;
+//    }
     @Override
     public String toString() {
-        String linea;
-        linea = this.nombreAdministrador + "," + this.apellidoAdministrador + "," + this.contrasena + "\n";
-        return linea;
+        return "Administrador{" + "nombreAdministrador=" + nombreAdministrador + ", apellidoAdministrador=" + apellidoAdministrador + ", contrasena=" + contrasena + '}';
     }
 
 }

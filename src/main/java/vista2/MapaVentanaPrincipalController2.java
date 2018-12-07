@@ -90,7 +90,6 @@ public class MapaVentanaPrincipalController2 implements Initializable, MapCompon
                 .streetViewControl(false)
                 .zoomControl(true)
                 .zoom(13);
-
         map = mapView.createMap(mapOptions);
         botonIniciarSesion.setOnMouseClicked((new EventHandler<MouseEvent>() {
             @Override
