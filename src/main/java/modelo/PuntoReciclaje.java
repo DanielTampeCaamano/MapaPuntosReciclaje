@@ -1,8 +1,9 @@
 package modelo;
 
 import datos.Archivo;
+import datos.ArchivoJson;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.stream.Collectors;
 
 public class PuntoReciclaje {
 
@@ -12,7 +13,9 @@ public class PuntoReciclaje {
     private ArrayList<Categoria> categorias;
     private double cantidadReciclada;
     private int cantidadVecesVisitada;
-    private static String rutaDatosPuntosReciclaje = "datos/datosPuntoReciclaje/PuntosReciclaje.txt";
+    private static String rutaDatosPuntosReciclaje = "datos/datospuntoreciclaje/puntosreciclaje.json";
+    private static final String rutaCoincidenciasPuntosReciclaje = "coincienciaspuntosreciclaje/puntosreciclaje.json";
+    private static final String rutaResultadoPuntoReciclaje = "resultadopuntoreciclaje/puntoreciclaje.json";
 
     public PuntoReciclaje(String direccion, double latitud, double longitud, ArrayList<Categoria> categorias) {
         this.direccion = direccion;
@@ -89,7 +92,7 @@ public class PuntoReciclaje {
     public void setCategorias(ArrayList<Categoria> categorias) {
         this.categorias = categorias;
     }
-    
+
     public void setCantidadReciclada(double cantidadReciclada) {
         this.cantidadReciclada = cantidadReciclada;
     }
@@ -98,69 +101,105 @@ public class PuntoReciclaje {
         this.cantidadVecesVisitada = cantidadVecesVisitada;
     }
 
-    public static void guardarDatosPuntosReciclaje(PuntoReciclaje puntoReciclaje) {
+    public static void guardarDatosPuntoReciclaje(PuntoReciclaje ptoReciclaje) {
         if (Archivo.existeArchivo(rutaDatosPuntosReciclaje)) {// Verifica si existe el archivo indicado en la ruta
-            List<String> listaDatosPuntosReciclaje = Archivo.leerArchivoComoListaString(rutaDatosPuntosReciclaje);// Se almacena los datos de los administradores en una Lista<String>, cada posicion de la lista equivale a una linea
-            String datosPuntoReciclaje;
-            String texto = "";
-            datosPuntoReciclaje = puntoReciclaje.toString();
-            listaDatosPuntosReciclaje.add(datosPuntoReciclaje);
-            for (int i = 0; i < listaDatosPuntosReciclaje.size(); i++) {
-                texto += listaDatosPuntosReciclaje.get(i) + "\n";
-            }
-            Archivo.eliminarArchivo(rutaDatosPuntosReciclaje);
-            Archivo.crearArchivo(rutaDatosPuntosReciclaje, texto);
+            ArrayList<PuntoReciclaje> listaDatosPuntosReciclaje = ArchivoJson.recurperarPuntosReciclaje();
+            listaDatosPuntosReciclaje.add(ptoReciclaje);
+            ArchivoJson.almacenarPuntosReciclaje(listaDatosPuntosReciclaje);
         } else {
-            String texto;
-            texto = puntoReciclaje.toString();
-            Archivo.crearArchivo(rutaDatosPuntosReciclaje, texto);
+            ArrayList<PuntoReciclaje> listaDatosPuntosReciclaje = new ArrayList<>();
+            listaDatosPuntosReciclaje.add(ptoReciclaje);
+            ArchivoJson.almacenarPuntosReciclaje(listaDatosPuntosReciclaje);
         }
     }
 
-    public static void borrarDatosPuntoReciclaje(String direccion) {
-        if (Archivo.existeArchivo(rutaDatosPuntosReciclaje)) {
-            String texto = "";
+    public static void guardarCoincidenciasPuntosReciclaje(ArrayList<PuntoReciclaje> coincidenciasPtosReciclaje) {
+        ArchivoJson.almacenarCoincidenciasPuntosReciclaje(coincidenciasPtosReciclaje);
+    }
 
-            List<String> listaDatosPuntosReciclaje = Archivo.leerArchivoComoListaString(rutaDatosPuntosReciclaje);
-            for (int i = 0; i < listaDatosPuntosReciclaje.size(); i++) {
-                if (listaDatosPuntosReciclaje.get(i).contains(direccion)) {
-                    listaDatosPuntosReciclaje.remove(i);
+    public static void guardarResultadoPuntoReciclaje(PuntoReciclaje ptoReciclaje) {
+        ArchivoJson.almacenarResultadoPuntoReciclaje(ptoReciclaje);
+    }
+
+    public static ArrayList<PuntoReciclaje> mostrarDatosPuntosReciclaje() {
+        if (Archivo.existeArchivo(rutaDatosPuntosReciclaje)) {
+            ArrayList<PuntoReciclaje> datosPuntosReciclaje = ArchivoJson.recurperarPuntosReciclaje();
+            return datosPuntosReciclaje;
+        } else {
+            System.out.println("No existe el archivo en la ruta indicada");
+        }
+        return new ArrayList<>();
+    }
+
+    public static ArrayList<PuntoReciclaje> mostrarCoincidenciasPuntosReciclaje() {
+        if (Archivo.existeArchivo(rutaCoincidenciasPuntosReciclaje)) {
+            ArrayList<PuntoReciclaje> datosPuntosReciclaje = ArchivoJson.recurperarCoincidenciasPuntosReciclaje();
+            return datosPuntosReciclaje;
+        } else {
+            System.out.println("No existe el archivo en la ruta indicada");
+        }
+        return new ArrayList<>();
+    }
+
+    public static PuntoReciclaje mostrarResultadoPuntoReciclaje() {
+        if (Archivo.existeArchivo(rutaResultadoPuntoReciclaje)) {
+            PuntoReciclaje datosPuntosReciclaje = ArchivoJson.recurperarResultadoPuntoReciclaje();
+            return datosPuntosReciclaje;
+        } else {
+            System.out.println("No existe el archivo en la ruta indicada");
+        }
+        return new PuntoReciclaje("", 0.0, 0.0, new ArrayList<>());
+    }
+
+    public static void editarDatosPuntoReciclaje(PuntoReciclaje ptoReciclaje) {
+        if (Archivo.existeArchivo(rutaDatosPuntosReciclaje)) {
+            ArrayList<PuntoReciclaje> listaDatosPuntosReciclaje = ArchivoJson.recurperarPuntosReciclaje();
+            listaDatosPuntosReciclaje.stream().filter((PuntoReciclaje puntoReciclaje) -> {
+                if (puntoReciclaje.getDireccion().equalsIgnoreCase(ptoReciclaje.getDireccion())
+                        || puntoReciclaje.getLatitud() == ptoReciclaje.getLatitud()
+                        && puntoReciclaje.getLongitud() == ptoReciclaje.getLongitud()) {
+                    if (ptoReciclaje.getCantidadVecesVisitada() != 0
+                            && ptoReciclaje.getCantidadVecesVisitada() != puntoReciclaje.getCantidadVecesVisitada()) {
+                        puntoReciclaje.setCantidadVecesVisitada(ptoReciclaje.getCantidadVecesVisitada());
+                    }
+                    if (ptoReciclaje.getCantidadReciclada() != 0
+                            && ptoReciclaje.getCantidadReciclada() != puntoReciclaje.getCantidadReciclada()) {
+                        puntoReciclaje.setCantidadReciclada(ptoReciclaje.getCantidadReciclada());
+                    }
+                    if (ptoReciclaje.getCategorias() != null
+                            && ptoReciclaje.getCategorias() != puntoReciclaje.getCategorias()) {
+                        puntoReciclaje.setCategorias(ptoReciclaje.getCategorias());
+                    }
                 }
-            }
-            for (int i = 0; i < listaDatosPuntosReciclaje.size(); i++) {
-                texto += listaDatosPuntosReciclaje.get(i) + "\n";
-            }
-            Archivo.eliminarArchivo(rutaDatosPuntosReciclaje);
-            Archivo.crearArchivo(rutaDatosPuntosReciclaje, texto);
+                return true;
+            }).distinct().collect(Collectors.toList());
+            ArchivoJson.almacenarPuntosReciclaje(listaDatosPuntosReciclaje);
+        } else {
+            System.out.println("No existe el archivo en la ruta indicada, revise que no haya errores");
+        }
+    }
+
+    public static void borrarDatosPuntoReciclaje(PuntoReciclaje ptoReciclaje) {
+        if (Archivo.existeArchivo(rutaDatosPuntosReciclaje)) {
+            ArrayList<PuntoReciclaje> listaDatosPuntosReciclaje = ArchivoJson.recurperarPuntosReciclaje();
+            listaDatosPuntosReciclaje.stream().filter((PuntoReciclaje puntoReciclaje) -> {
+                if (puntoReciclaje.getDireccion().equalsIgnoreCase(ptoReciclaje.getDireccion())
+                        || puntoReciclaje.getLatitud() == ptoReciclaje.getLatitud()
+                        && puntoReciclaje.getLongitud() == ptoReciclaje.getLongitud()
+                        || puntoReciclaje.getCategorias() == ptoReciclaje.getCategorias()) {
+                    listaDatosPuntosReciclaje.remove(puntoReciclaje);
+                }
+                return true;
+            }).distinct().collect(Collectors.toList());
+            ArchivoJson.almacenarPuntosReciclaje(listaDatosPuntosReciclaje);
         } else {
             System.out.println("No existe el archivo en la ruta de destino...");
         }
     }
 
-    public String leerInformacionMapaComoString() {
-        String texto = "";// Se crea una variable String para almacenar datos
-        if (Archivo.existeArchivo(rutaDatosPuntosReciclaje)) {// Verifica que el Archivo exista en la Ruta indicada
-            texto = Archivo.leerArchivoComoString(rutaDatosPuntosReciclaje);// Traspasa la informacion almacenada en el archivo.txt a la variable como String
-        }
-        return texto;// Retorna el String que contiene los datos obtenidos
-    }
-
-    public List<String> leerInformacionMapaComoListaString() {
-        List<String> textoLista = null;// Se crea una Lista String para almacenar datos
-        if (Archivo.existeArchivo(rutaDatosPuntosReciclaje)) {// Verifica que el Archivo exista en la Ruta indicada
-            textoLista = Archivo.leerArchivoComoListaString(rutaDatosPuntosReciclaje);// Traspasa la informacion Almacenada en el Archivo.txt a la lista como Lista<String>
-        }
-        return textoLista;// Retorna la Lista que contiene los datos obtenidos
-    }
-
     @Override
     public String toString() {
-        String linea;
-        linea = this.direccion + "," + this.latitud + "," + this.longitud + "," + this.cantidadReciclada + "," + this.cantidadVecesVisitada;
-        for (int i = 0; i < this.categorias.size(); i++) {
-            linea += "," + categorias.get(i).toString();
-        }
-        linea += "\n";
-        return linea;
+        return "PuntoReciclaje{" + "direccion=" + direccion + ", latitud=" + latitud + ", longitud=" + longitud + ", categorias=" + categorias + ", cantidadReciclada=" + cantidadReciclada + ", cantidadVecesVisitada=" + cantidadVecesVisitada + '}';
     }
+
 }

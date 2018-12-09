@@ -33,7 +33,6 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class MapaVentanaPrincipalController1 implements Initializable, MapComponentInitializedListener {
@@ -122,15 +121,16 @@ public class MapaVentanaPrincipalController1 implements Initializable, MapCompon
             @Override
             public void handle(MouseEvent event) {
                 try {
+                    Stage ventanaActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     Parent root;
                     root = FXMLLoader.load(getClass().getResource("/fxml/VentanaBusquedaPersonalizada.fxml"));
                     Stage ventana = new Stage();
                     ventana.setScene(new Scene(root));
                     ventana.setTitle("Busqueda Personalizada");
                     ventana.setResizable(false);
+                    ventana.initOwner(ventanaActual);
                     ventana.show();
-                    Stage ventanaActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    ventanaActual.close();
+                    ventanaActual.hide();
                 } catch (IOException ex) {
                     Logger.getLogger(MapaVentanaPrincipalController2.class.getName()).log(Level.SEVERE, null, ex);
                 }

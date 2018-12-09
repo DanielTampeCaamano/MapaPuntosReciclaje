@@ -122,15 +122,16 @@ public class MapaVentanaPrincipalController2 implements Initializable, MapCompon
             @Override
             public void handle(MouseEvent event) {
                 try {
+                    Stage ventanaActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     Parent root;
                     root = FXMLLoader.load(getClass().getResource("/fxml/VentanaBusquedaPersonalizada.fxml"));
                     Stage ventana = new Stage();
                     ventana.setScene(new Scene(root));
                     ventana.setTitle("Busqueda Personalizada");
                     ventana.setResizable(false);
+                    ventana.initOwner(ventanaActual);
                     ventana.show();
-                    Stage ventanaActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    ventanaActual.close();
+                    ventanaActual.hide();
                 } catch (IOException ex) {
                     Logger.getLogger(MapaVentanaPrincipalController2.class.getName()).log(Level.SEVERE, null, ex);
                 }
