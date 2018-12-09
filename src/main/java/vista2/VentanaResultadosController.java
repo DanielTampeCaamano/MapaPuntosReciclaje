@@ -43,6 +43,8 @@ public class VentanaResultadosController implements Initializable {
     private TableColumn<PuntoReciclaje, String> tablaColumnaResultados;
     @FXML
     private Button botonMostrarMapa;
+    @FXML
+    private Button botonVolver;
 
     /**
      * Initializes the controller class.
@@ -78,6 +80,15 @@ public class VentanaResultadosController implements Initializable {
                 } catch (IOException ex) {
                     Logger.getLogger(MapaVentanaPrincipalController2.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            }
+        }));
+        botonVolver.setOnMouseClicked((new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Stage ventanaActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Stage ventanaAnterior =(Stage)ventanaActual.getOwner();
+                ventanaActual.close();
+                ventanaAnterior.show();
             }
         }));
     }

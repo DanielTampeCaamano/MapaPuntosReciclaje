@@ -14,8 +14,8 @@ public class PuntoReciclaje {
     private double cantidadReciclada;
     private int cantidadVecesVisitada;
     private static String rutaDatosPuntosReciclaje = "datos/datospuntoreciclaje/puntosreciclaje.json";
-    private static final String rutaCoincidenciasPuntosReciclaje = "coincienciaspuntosreciclaje/puntosreciclaje.json";
-    private static final String rutaResultadoPuntoReciclaje = "resultadopuntoreciclaje/puntoreciclaje.json";
+    private static final String rutaCoincidenciasPuntosReciclaje = "datos/coincienciaspuntosreciclaje/puntosreciclaje.json";
+    private static final String rutaResultadoPuntoReciclaje = "datos/resultadopuntoreciclaje/puntoreciclaje.json";
 
     public PuntoReciclaje(String direccion, double latitud, double longitud, ArrayList<Categoria> categorias) {
         this.direccion = direccion;

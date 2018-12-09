@@ -120,8 +120,9 @@ public class MapaVentanaPrincipalController1 implements Initializable, MapCompon
         botonBusquedaPersonalizada.setOnMouseClicked((new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                Stage ventanaActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 try {
-                    Stage ventanaActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
                     Parent root;
                     root = FXMLLoader.load(getClass().getResource("/fxml/VentanaBusquedaPersonalizada.fxml"));
                     Stage ventana = new Stage();
@@ -130,10 +131,11 @@ public class MapaVentanaPrincipalController1 implements Initializable, MapCompon
                     ventana.setResizable(false);
                     ventana.initOwner(ventanaActual);
                     ventana.show();
-                    ventanaActual.hide();
+                    //ventanaActual.hide();
                 } catch (IOException ex) {
                     Logger.getLogger(MapaVentanaPrincipalController2.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                
             }
         }));
         botonEditarAdministradores.setOnMouseClicked((new EventHandler<MouseEvent>() {

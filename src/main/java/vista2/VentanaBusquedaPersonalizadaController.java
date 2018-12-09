@@ -80,20 +80,40 @@ public class VentanaBusquedaPersonalizadaController implements Initializable {
                 if (checkBoxBateriaPila.isSelected()) {
                     categorias.add(Categoria.BATERIAPILA);
                 }
-                PuntoReciclaje criterioPuntoReciclaje = new PuntoReciclaje(campoTextoDireccion.getText(),
-                        Double.parseDouble(campoTextoLatitud.getText()), Double.parseDouble(campoTextoLongitud.getText()),
-                        categorias, 0, 0);
-                ArrayList<PuntoReciclaje> ptosReciclajeAlmacenados = PuntoReciclaje.mostrarDatosPuntosReciclaje();
-                ptosReciclajeAlmacenados.stream().filter((PuntoReciclaje ptoAlmacenado) -> {
-                    if (!ptoAlmacenado.getDireccion().trim().equalsIgnoreCase(criterioPuntoReciclaje.getDireccion().trim())
-                            && (ptoAlmacenado.getLatitud() != criterioPuntoReciclaje.getLatitud()
-                            || ptoAlmacenado.getLongitud() != criterioPuntoReciclaje.getLongitud())
-                            && !ptoAlmacenado.getCategorias().equals(criterioPuntoReciclaje.getCategorias())) {
-                        ptosReciclajeAlmacenados.remove(ptoAlmacenado);
-                    }
-                    return false;
-                });
-                PuntoReciclaje.guardarCoincidenciasPuntosReciclaje(ptosReciclajeAlmacenados);
+                if (!campoTextoDireccion.getText().isEmpty()) {
+                    String direccion = campoTextoDireccion.getText();
+                } else {
+                    String direccion = " ";
+                }
+                try {
+                    PuntoReciclaje criterioPuntoReciclaje = new PuntoReciclaje(campoTextoDireccion.getText(),
+                            Double.parseDouble(campoTextoLatitud.getText()), Double.parseDouble(campoTextoLongitud.getText()),
+                            categorias, 0, 0);
+                    ArrayList<PuntoReciclaje> ptosReciclajeAlmacenados = PuntoReciclaje.mostrarDatosPuntosReciclaje();
+                    ptosReciclajeAlmacenados.stream().filter((PuntoReciclaje ptoAlmacenado) -> {
+                        if (!ptoAlmacenado.getDireccion().trim().equalsIgnoreCase(criterioPuntoReciclaje.getDireccion().trim())
+                                && (ptoAlmacenado.getLatitud() != criterioPuntoReciclaje.getLatitud()
+                                || ptoAlmacenado.getLongitud() != criterioPuntoReciclaje.getLongitud())
+                                && !ptoAlmacenado.getCategorias().equals(criterioPuntoReciclaje.getCategorias())) {
+                            ptosReciclajeAlmacenados.remove(ptoAlmacenado);
+                        }
+                        PuntoReciclaje.guardarCoincidenciasPuntosReciclaje(ptosReciclajeAlmacenados);
+                        return true;
+                    });
+                } catch (Exception ex) {
+                    PuntoReciclaje criterioPuntoReciclaje = new PuntoReciclaje("", 0, 0, new ArrayList<>());
+                    ArrayList<PuntoReciclaje> ptosReciclajeAlmacenados = PuntoReciclaje.mostrarDatosPuntosReciclaje();
+                    ptosReciclajeAlmacenados.stream().filter((PuntoReciclaje ptoAlmacenado) -> {
+                        if (!ptoAlmacenado.getDireccion().trim().equalsIgnoreCase(criterioPuntoReciclaje.getDireccion().trim())
+                                && (ptoAlmacenado.getLatitud() != criterioPuntoReciclaje.getLatitud()
+                                || ptoAlmacenado.getLongitud() != criterioPuntoReciclaje.getLongitud())
+                                && !ptoAlmacenado.getCategorias().equals(criterioPuntoReciclaje.getCategorias())) {
+                            ptosReciclajeAlmacenados.remove(ptoAlmacenado);
+                        }
+                        PuntoReciclaje.guardarCoincidenciasPuntosReciclaje(ptosReciclajeAlmacenados);
+                        return false;
+                    });
+                }
                 try {
                     Stage ventanaActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     Parent root;
@@ -114,10 +134,10 @@ public class VentanaBusquedaPersonalizadaController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 Stage ventanaActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                Stage antiguaVentana= (Stage) ventanaActual.getOwner();
+                Stage antiguaVentana = (Stage) ventanaActual.getOwner();
                 antiguaVentana.show();
                 ventanaActual.close();
-                
+
             }
         }));
     }

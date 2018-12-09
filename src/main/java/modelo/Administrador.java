@@ -12,7 +12,7 @@ public class Administrador {
     private String nombreAdministrador;
     private String apellidoAdministrador;
     private String contrasena;
-    private static final String RUTADATOSADMINISTRADORES = "datos/datosAdministradores/administradores.json";
+    private static final String RUTADATOSADMINISTRADORES = "datos/datosadministradores/administradores.json";
 
     public Administrador(String nombreAdministrador, String apellidoAdministrador, String contrasena) {
         this.nombreAdministrador = nombreAdministrador;

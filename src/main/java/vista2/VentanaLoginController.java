@@ -65,13 +65,13 @@ public class VentanaLoginController implements Initializable {
         botonIngresar.setOnMouseClicked((new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                Administrador admin = new Administrador(campoTextoNombre.getText(),
-                        campoTextoApellido.getText(), campoTextoContrasena.getText());
-                ArrayList<Administrador> administradores = Administrador.mostrarDatosAdministrador();
-                administradores.forEach((Administrador adminRegistrado) -> {
-                    if (adminRegistrado.getNombreAdministrador().equalsIgnoreCase(admin.getNombreAdministrador())
-                            && adminRegistrado.getApellidoAdministrador().equalsIgnoreCase(admin.getApellidoAdministrador())
-                            && adminRegistrado.getContrasena().equalsIgnoreCase(admin.getContrasena())) {
+//                Administrador admin = new Administrador(campoTextoNombre.getText(),
+//                        campoTextoApellido.getText(), campoTextoContrasena.getText());
+//                ArrayList<Administrador> administradores = Administrador.mostrarDatosAdministrador();
+//                administradores.forEach((Administrador adminRegistrado) -> {
+//                    if (adminRegistrado.getNombreAdministrador().equalsIgnoreCase(admin.getNombreAdministrador())
+//                            && adminRegistrado.getApellidoAdministrador().equalsIgnoreCase(admin.getApellidoAdministrador())
+//                            && adminRegistrado.getContrasena().equalsIgnoreCase(admin.getContrasena())) {
                         try {
                             Parent root;
                             root = FXMLLoader.load(getClass().getResource("/fxml/MapaVentanaPrincipal2.fxml"));
@@ -86,8 +86,8 @@ public class VentanaLoginController implements Initializable {
                             Logger.getLogger(MapaVentanaPrincipalController1.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
-                });
-            }
+//                });
+//            }
         }));
         botonCancelar.setOnMouseClicked((new EventHandler<MouseEvent>() {
             @Override

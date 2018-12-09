@@ -15,13 +15,13 @@ import modelo.PuntoReciclaje;
 
 public class ArchivoJson {
 
-    private static final String RUTADATOSADMINISTRADORES = "datosadministradores/";
+    private static final String RUTADATOSADMINISTRADORES = "datos/datosadministradores/";
     private static final String NOMBREDATOSADMINISTRADORES = "adminstradores.json";
-    private static final String RUTADATOSPUNTOSRECICLAJE = "datospuntosreciclaje/";
+    private static final String RUTADATOSPUNTOSRECICLAJE = "datos/datospuntosreciclaje/";
     private static final String NOMBREDATOSPUNTOSRECICLAJE = "puntosreciclaje.json";
-    private static final String RUTACOINCIDENCASPUNTOSRECICLAJE = "coincienciaspuntosreciclaje/";
+    private static final String RUTACOINCIDENCASPUNTOSRECICLAJE = "datos/coincienciaspuntosreciclaje/";
     private static final String NOMBRECOINCIDENCIASPUNTOSRECICLAJE = "puntosreciclaje.json";
-    private static final String RUTARESULTADOPUNTORECICLAJE = "resultadopuntoreciclaje/";
+    private static final String RUTARESULTADOPUNTORECICLAJE = "datos/resultadopuntoreciclaje/";
     private static final String NOMBRERESULTADOPUNTORECICLAJE = "puntoreciclaje.json";
 
     public static boolean almacenarAdministradores(ArrayList<Administrador> administradores) {

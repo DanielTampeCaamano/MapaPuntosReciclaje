@@ -131,7 +131,7 @@ public class MapaVentanaPrincipalController2 implements Initializable, MapCompon
                     ventana.setResizable(false);
                     ventana.initOwner(ventanaActual);
                     ventana.show();
-                    ventanaActual.hide();
+                    //ventanaActual.hide();
                 } catch (IOException ex) {
                     Logger.getLogger(MapaVentanaPrincipalController2.class.getName()).log(Level.SEVERE, null, ex);
                 }
