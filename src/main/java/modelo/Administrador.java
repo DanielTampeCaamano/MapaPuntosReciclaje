@@ -56,33 +56,27 @@ public class Administrador {
             listaDatosAdministradores.add(adminIgresado);
             ArchivoJson.almacenarAdministradores(listaDatosAdministradores);
         } else {
-            ArrayList<Administrador> listaDatosAdministradores = ArchivoJson.recurperarAdministradores();
+            ArrayList<Administrador> listaDatosAdministradores = new ArrayList<>();
             listaDatosAdministradores.add(adminIgresado);
             ArchivoJson.almacenarAdministradores(listaDatosAdministradores);
         }
     }
 
-    public static String mostrarDatosAdministrador(String nombreAdministrador, String apellidoAdministrador) {
-        String datosAdministrador = "";
+    public static ArrayList<Administrador> mostrarDatosAdministrador() {
+        ArrayList<Administrador> listaDatosAdministradores = new ArrayList<>();
         if (Archivo.existeArchivo(RUTADATOSADMINISTRADORES)) {
-            List<String> listaDatosAdministradores = Archivo.leerArchivoComoListaString(RUTADATOSADMINISTRADORES);
-            for (int i = 0; i < listaDatosAdministradores.size(); i++) {
-                if (listaDatosAdministradores.get(i).contains(nombreAdministrador)
-                        && listaDatosAdministradores.get(i).contains(apellidoAdministrador)) {
-                    datosAdministrador = listaDatosAdministradores.get(i);
-                }
-            }
+            listaDatosAdministradores = ArchivoJson.recurperarAdministradores();
         }
-        return datosAdministrador;
+        return listaDatosAdministradores;
     }
 
     public static void editarDatosAdministradorContrasenaNueva(Administrador adminIngresado) {
         if (Archivo.existeArchivo(RUTADATOSADMINISTRADORES)) {
             ArrayList<Administrador> listaDatosAdministradores = ArchivoJson.recurperarAdministradores();
-            listaDatosAdministradores.stream().filter((Administrador x) -> {
-                if (x.getNombreAdministrador().equalsIgnoreCase(adminIngresado.getNombreAdministrador())
-                        && x.getApellidoAdministrador().equalsIgnoreCase(adminIngresado.getApellidoAdministrador())) {
-                    x.setContrasena(adminIngresado.getContrasena());
+            listaDatosAdministradores.stream().filter((Administrador administrador) -> {
+                if (administrador.getNombreAdministrador().equalsIgnoreCase(adminIngresado.getNombreAdministrador())
+                        && administrador.getApellidoAdministrador().equalsIgnoreCase(adminIngresado.getApellidoAdministrador())) {
+                    administrador.setContrasena(adminIngresado.getContrasena());
                 }
                 return false;
             }).distinct().collect(Collectors.toList());

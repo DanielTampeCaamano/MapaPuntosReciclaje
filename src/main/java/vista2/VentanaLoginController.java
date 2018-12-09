@@ -5,8 +5,10 @@
  */
 package vista2;
 
+import datos.ArchivoJson;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,6 +26,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import modelo.Administrador;
 
 /**
  * FXML Controller class
@@ -59,24 +62,51 @@ public class VentanaLoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        botonIngresar.setOnMouseClicked((new EventHandler<MouseEvent>(){
+        botonIngresar.setOnMouseClicked((new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Administrador admin = new Administrador(campoTextoNombre.getText(),
+                        campoTextoApellido.getText(), campoTextoContrasena.getText());
+                ArrayList<Administrador> administradores = Administrador.mostrarDatosAdministrador();
+                administradores.forEach((Administrador adminRegistrado) -> {
+                    if (adminRegistrado.getNombreAdministrador().equalsIgnoreCase(admin.getNombreAdministrador())
+                            && adminRegistrado.getApellidoAdministrador().equalsIgnoreCase(admin.getApellidoAdministrador())
+                            && adminRegistrado.getContrasena().equalsIgnoreCase(admin.getContrasena())) {
+                        try {
+                            Parent root;
+                            root = FXMLLoader.load(getClass().getResource("/fxml/MapaVentanaPrincipal2.fxml"));
+                            Stage ventana = new Stage();
+                            ventana.setScene(new Scene(root));
+                            ventana.setTitle("Mapa de Puntos de Reciclaje");
+                            ventana.setResizable(false);
+                            ventana.show();
+                            Stage ventanaActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                            ventanaActual.close();
+                        } catch (IOException ex) {
+                            Logger.getLogger(MapaVentanaPrincipalController1.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                });
+            }
+        }));
+        botonCancelar.setOnMouseClicked((new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 try {
                     Parent root;
-                    root = FXMLLoader.load(getClass().getResource("/fxml/MapaVentanaPrincipal2.fxml"));
+                    root = FXMLLoader.load(getClass().getResource("/fxml/MapaVentanaPrincipal1.fxml"));
                     Stage ventana = new Stage();
                     ventana.setScene(new Scene(root));
-                    ventana.setTitle("Busqueda Personalizada");
+                    ventana.setTitle("Mapa de Puntos de Reciclaje");
                     ventana.setResizable(false);
                     ventana.show();
-                    Stage ventanaActual=(Stage)((Node)event.getSource()).getScene().getWindow();
+                    Stage ventanaActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     ventanaActual.close();
                 } catch (IOException ex) {
                     Logger.getLogger(MapaVentanaPrincipalController1.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }));
-    }    
-    
+    }
+
 }

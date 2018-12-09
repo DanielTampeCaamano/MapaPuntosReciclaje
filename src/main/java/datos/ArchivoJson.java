@@ -17,8 +17,12 @@ public class ArchivoJson {
 
     private static final String RUTADATOSADMINISTRADORES = "datosadministradores/";
     private static final String NOMBREDATOSADMINISTRADORES = "adminstradores.json";
-    private static final String RUTADATOSPUNTOSRECICLAJE = "datosadministradores/";
-    private static final String NOMBREDATOSPUNTOSRECICLAJE = "adminstradores.json";
+    private static final String RUTADATOSPUNTOSRECICLAJE = "datospuntosreciclaje/";
+    private static final String NOMBREDATOSPUNTOSRECICLAJE = "puntosreciclaje.json";
+    private static final String RUTACOINCIDENCASPUNTOSRECICLAJE = "coincienciaspuntosreciclaje/";
+    private static final String NOMBRECOINCIDENCIASPUNTOSRECICLAJE = "puntosreciclaje.json";
+    private static final String RUTARESULTADOPUNTORECICLAJE = "resultadopuntoreciclaje/";
+    private static final String NOMBRERESULTADOPUNTORECICLAJE = "puntoreciclaje.json";
 
     public static boolean almacenarAdministradores(ArrayList<Administrador> administradores) {
         boolean respuesta = false;
@@ -50,6 +54,36 @@ public class ArchivoJson {
         return respuesta;
     }
 
+    public static boolean almacenarCoincidenciasPuntosReciclaje(ArrayList<PuntoReciclaje> coincidenciasPtosReciclaje) {
+        boolean respuesta = false;
+        Type listType = new TypeToken<List<PuntoReciclaje>>() {
+        }.getType();
+        Gson gson = new Gson();
+        String json = gson.toJson(coincidenciasPtosReciclaje, listType);
+        try (FileWriter file = new FileWriter(RUTACOINCIDENCASPUNTOSRECICLAJE + NOMBRECOINCIDENCIASPUNTOSRECICLAJE)) {
+            file.write(json);
+            respuesta = true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return respuesta;
+    }
+
+    public static boolean almacenarResultadoPuntoReciclaje(PuntoReciclaje coincidenciasPtosReciclaje) {
+        boolean respuesta = false;
+        Type tipoPtoReciclaje = new TypeToken<PuntoReciclaje>() {
+        }.getType();
+        Gson gson = new Gson();
+        String json = gson.toJson(coincidenciasPtosReciclaje, tipoPtoReciclaje);
+        try (FileWriter file = new FileWriter(RUTACOINCIDENCASPUNTOSRECICLAJE + NOMBRECOINCIDENCIASPUNTOSRECICLAJE)) {
+            file.write(json);
+            respuesta = true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return respuesta;
+    }
+
     public static ArrayList<Administrador> recurperarAdministradores() {
         Gson gson = new Gson();
         BufferedReader br = null;
@@ -58,14 +92,14 @@ public class ArchivoJson {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        ArrayList<Administrador> persona
+        ArrayList<Administrador> administradores
                 = gson.fromJson(br, new TypeToken<List<Administrador>>() {
                 }.getType());
-        return persona;
+        return administradores;
 
     }
 
-    public static ArrayList<PuntoReciclaje> recurperarObjetos() {
+    public static ArrayList<PuntoReciclaje> recurperarPuntosReciclaje() {
         Gson gson = new Gson();
         BufferedReader br = null;
         try {
@@ -73,10 +107,38 @@ public class ArchivoJson {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        ArrayList<PuntoReciclaje> persona
+        ArrayList<PuntoReciclaje> puntosReciclaje
                 = gson.fromJson(br, new TypeToken<List<PuntoReciclaje>>() {
                 }.getType());
-        return persona;
+        return puntosReciclaje;
+
+    }
+    public static ArrayList<PuntoReciclaje> recurperarCoincidenciasPuntosReciclaje() {
+        Gson gson = new Gson();
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader(RUTACOINCIDENCASPUNTOSRECICLAJE + NOMBRECOINCIDENCIASPUNTOSRECICLAJE));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        ArrayList<PuntoReciclaje> puntosReciclaje
+                = gson.fromJson(br, new TypeToken<List<PuntoReciclaje>>() {
+                }.getType());
+        return puntosReciclaje;
+
+    }
+    public static PuntoReciclaje recurperarResultadoPuntoReciclaje() {
+        Gson gson = new Gson();
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader(RUTARESULTADOPUNTORECICLAJE + NOMBRERESULTADOPUNTORECICLAJE));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        PuntoReciclaje puntoReciclaje
+                = gson.fromJson(br, new TypeToken<PuntoReciclaje>() {
+                }.getType());
+        return puntoReciclaje;
 
     }
 
