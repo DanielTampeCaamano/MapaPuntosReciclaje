@@ -12,7 +12,7 @@ public class Administrador {
     private String nombreAdministrador;
     private String apellidoAdministrador;
     private String contrasena;
-    private static final String RUTADATOSADMINISTRADORES = "datos/datosAdministradores/administradores.json";
+    private static final String RUTADATOSADMINISTRADORES = "datos/datosadministradores/administradores.json";
 
     public Administrador(String nombreAdministrador, String apellidoAdministrador, String contrasena) {
         this.nombreAdministrador = nombreAdministrador;
@@ -103,11 +103,6 @@ public class Administrador {
         }
     }
 
-//    public String toString() {
-//        String linea;
-//        linea = this.nombreAdministrador + "," + this.apellidoAdministrador + "," + this.contrasena + "\n";
-//        return linea;
-//    }
     @Override
     public String toString() {
         return "Administrador{" + "nombreAdministrador=" + nombreAdministrador + ", apellidoAdministrador=" + apellidoAdministrador + ", contrasena=" + contrasena + '}';

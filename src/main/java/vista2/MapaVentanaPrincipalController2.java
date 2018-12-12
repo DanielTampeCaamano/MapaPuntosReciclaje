@@ -18,13 +18,17 @@ import com.lynden.gmapsfx.javascript.object.Marker;
 import com.lynden.gmapsfx.javascript.object.MarkerOptions;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -32,9 +36,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import modelo.Categoria;
+import modelo.PuntoReciclaje;
 
 public class MapaVentanaPrincipalController2 implements Initializable, MapComponentInitializedListener {
 
@@ -91,6 +99,8 @@ public class MapaVentanaPrincipalController2 implements Initializable, MapCompon
                 .zoomControl(true)
                 .zoom(13);
         map = mapView.createMap(mapOptions);
+        botonBusquedaPersonalizada.setVisible(true);
+        menuBar.setVisible(true);
         botonIniciarSesion.setOnMouseClicked((new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -121,8 +131,9 @@ public class MapaVentanaPrincipalController2 implements Initializable, MapCompon
         botonBusquedaPersonalizada.setOnMouseClicked((new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                Stage ventanaActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 try {
-                    Stage ventanaActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
                     Parent root;
                     root = FXMLLoader.load(getClass().getResource("/fxml/VentanaBusquedaPersonalizada.fxml"));
                     Stage ventana = new Stage();
@@ -131,10 +142,11 @@ public class MapaVentanaPrincipalController2 implements Initializable, MapCompon
                     ventana.setResizable(false);
                     ventana.initOwner(ventanaActual);
                     ventana.show();
-                    ventanaActual.hide();
+                    //ventanaActual.hide();
                 } catch (IOException ex) {
                     Logger.getLogger(MapaVentanaPrincipalController2.class.getName()).log(Level.SEVERE, null, ex);
                 }
+
             }
         }));
         botonEditarAdministradores.setOnMouseClicked((new EventHandler<MouseEvent>() {
@@ -169,6 +181,115 @@ public class MapaVentanaPrincipalController2 implements Initializable, MapCompon
                 }
             }
         }));
+        menuItemVidrio.setOnAction((new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                ArrayList<PuntoReciclaje> ptosReciclajeAlmacenados = PuntoReciclaje.mostrarDatosPuntosReciclaje();
+                ArrayList<PuntoReciclaje> coincidenciasPorAlmacenar = ptosReciclajeAlmacenados;
+
+                for (PuntoReciclaje ptoAlmacenado : ptosReciclajeAlmacenados) {
+                    int contador = 0;
+                    for (Categoria categoria : ptoAlmacenado.getCategorias()) {
+                        if (categoria.equals(Categoria.VIDRIO)) {
+                            contador = 1;
+                        }
+                    }
+                    if (contador == 0) {
+                        coincidenciasPorAlmacenar.remove(ptoAlmacenado);
+                    }
+                }
+                PuntoReciclaje.guardarCoincidenciasPuntosReciclaje(coincidenciasPorAlmacenar);
+
+                iniciarVentana();
+            }
+        }));
+        menuItemMetal.setOnAction((new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                ArrayList<PuntoReciclaje> ptosReciclajeAlmacenados = PuntoReciclaje.mostrarDatosPuntosReciclaje();
+                ArrayList<PuntoReciclaje> coincidenciasPorAlmacenar = ptosReciclajeAlmacenados;
+
+                for (PuntoReciclaje ptoAlmacenado : ptosReciclajeAlmacenados) {
+                    int contador = 0;
+                    for (Categoria categoria : ptoAlmacenado.getCategorias()) {
+                        if (categoria.equals(Categoria.METAL)) {
+                            contador = 1;
+                        }
+                    }
+                    if (contador == 0) {
+                        coincidenciasPorAlmacenar.remove(ptoAlmacenado);
+                    }
+                }
+                PuntoReciclaje.guardarCoincidenciasPuntosReciclaje(coincidenciasPorAlmacenar);
+
+                iniciarVentana();
+            }
+        }));
+        menuItemPapel.setOnAction((new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                ArrayList<PuntoReciclaje> ptosReciclajeAlmacenados = PuntoReciclaje.mostrarDatosPuntosReciclaje();
+                ArrayList<PuntoReciclaje> coincidenciasPorAlmacenar = ptosReciclajeAlmacenados;
+
+                for (PuntoReciclaje ptoAlmacenado : ptosReciclajeAlmacenados) {
+                    int contador = 0;
+                    for (Categoria categoria : ptoAlmacenado.getCategorias()) {
+                        if (categoria.equals(Categoria.PAPEL)) {
+                            contador = 1;
+                        }
+                    }
+                    if (contador == 0) {
+                        coincidenciasPorAlmacenar.remove(ptoAlmacenado);
+                    }
+                }
+                PuntoReciclaje.guardarCoincidenciasPuntosReciclaje(coincidenciasPorAlmacenar);
+
+                iniciarVentana();
+            }
+        }));
+        menuItemPlastico.setOnAction((new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                ArrayList<PuntoReciclaje> ptosReciclajeAlmacenados = PuntoReciclaje.mostrarDatosPuntosReciclaje();
+                ArrayList<PuntoReciclaje> coincidenciasPorAlmacenar = ptosReciclajeAlmacenados;
+
+                for (PuntoReciclaje ptoAlmacenado : ptosReciclajeAlmacenados) {
+                    int contador = 0;
+                    for (Categoria categoria : ptoAlmacenado.getCategorias()) {
+                        if (categoria.equals(Categoria.PLASTICO)) {
+                            contador = 1;
+                        }
+                    }
+                    if (contador == 0) {
+                        coincidenciasPorAlmacenar.remove(ptoAlmacenado);
+                    }
+                }
+                PuntoReciclaje.guardarCoincidenciasPuntosReciclaje(coincidenciasPorAlmacenar);
+
+                iniciarVentana();
+            }
+        }));
+        menuItemBateriaPila.setOnAction((new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                ArrayList<PuntoReciclaje> ptosReciclajeAlmacenados = PuntoReciclaje.mostrarDatosPuntosReciclaje();
+                ArrayList<PuntoReciclaje> coincidenciasPorAlmacenar = ptosReciclajeAlmacenados;
+
+                for (PuntoReciclaje ptoAlmacenado : ptosReciclajeAlmacenados) {
+                    int contador = 0;
+                    for (Categoria categoria : ptoAlmacenado.getCategorias()) {
+                        if (categoria.equals(Categoria.BATERIAPILA)) {
+                            contador = 1;
+                        }
+                    }
+                    if (contador == 0) {
+                        coincidenciasPorAlmacenar.remove(ptoAlmacenado);
+                    }
+                }
+                PuntoReciclaje.guardarCoincidenciasPuntosReciclaje(coincidenciasPorAlmacenar);
+                iniciarVentana();
+            }
+        }));
         //Add markers to the map
 //        MarkerOptions markerOptions1 = new MarkerOptions();
 //        markerOptions1.position(joeSmithLocation).animation(Animation.BOUNCE);
@@ -181,5 +302,58 @@ public class MapaVentanaPrincipalController2 implements Initializable, MapCompon
 //        InfoWindow joeSmithInfoWindow = new InfoWindow(infoWindowOptions1);
 //        joeSmithInfoWindow.open(map, joeSmithMarker);
 //        
+    }
+
+    public void iniciarVentana() {
+        ArrayList<PuntoReciclaje> coincidenciasPtosReciclaje = PuntoReciclaje.mostrarCoincidenciasPuntosReciclaje();
+        ArrayList<Button> listaBotonesResultados = new ArrayList<>();
+        
+        coincidenciasPtosReciclaje.forEach(coincidenciaAlmacenada -> {
+            
+            Button botonResultado = new Button(coincidenciaAlmacenada.getDireccion());
+            botonResultado.setOnMouseClicked((new EventHandler<MouseEvent>() {
+                
+                @Override
+                public void handle(MouseEvent event) {
+                    PuntoReciclaje.guardarResultadoPuntoReciclaje(coincidenciaAlmacenada);
+                    try {
+                        Stage ventanaActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        Parent root;
+                        root = FXMLLoader.load(getClass().getResource("/fxml/VentanaMapaResultados.fxml"));
+                        Stage ventana = new Stage();
+                        ventana.setScene(new Scene(root));
+                        ventana.setTitle("Mapa del Resultado de Busqueda...");
+                        ventana.setResizable(false);
+                        ventana.initOwner(ventanaActual.getOwner());
+                        ventana.show();
+                        ventanaActual.hide();
+                        
+                    } catch (IOException ex) {
+                        Logger.getLogger(MapaVentanaPrincipalController2.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }));
+            listaBotonesResultados.add(botonResultado);
+        });
+        
+        GridPane gridPane = new GridPane();
+        gridPane.setPadding(new Insets(5));
+        gridPane.setHgap(5);
+        gridPane.setVgap(5);
+        
+        listaBotonesResultados.forEach(boton -> {
+            gridPane.add(boton, 0, listaBotonesResultados.indexOf(boton));
+        });
+        ScrollPane scrollPane = new ScrollPane(gridPane);
+        
+        Stage ventanaActual = (Stage) (menuBar.getScene().getWindow());
+        //            Parent root;
+        //            root = FXMLLoader.load(getClass().getResource("/fxml/VentanaResultados.fxml"));
+        Stage ventana = new Stage();
+        ventana.setScene(new Scene(scrollPane));
+        ventana.setTitle("Resultados Busqueda");
+        ventana.setResizable(false);
+        ventana.initOwner(ventanaActual);
+        ventana.show();
     }
 }

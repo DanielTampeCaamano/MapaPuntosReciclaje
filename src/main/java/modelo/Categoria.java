@@ -27,9 +27,4 @@ public enum Categoria {
         return BATERIAPILA;
     }
 
-    @Override
-    public String toString() {
-        return "Categoria{" + '}';
-    }
-
 }

@@ -152,38 +152,45 @@ public class VentanaEditarPuntosReciclajeController implements Initializable {
                     categorias.add(Categoria.BATERIAPILA);
                 }
                 PuntoReciclaje nuevoPtoReciclaje;
-                if (campoTextoCantidadReciclada.getText().isEmpty()) {
-                    nuevoPtoReciclaje
-                            = new PuntoReciclaje(campoTextoDireccion.getText(),
-                                    Double.parseDouble(campoTextoLatitud.getText()),
-                                    Double.parseDouble(campoTextoLongitud.getText()),
-                                    categorias,
-                                    Integer.parseInt(campoTextoNumeroVisitas.getText()));
-                } else if (campoTextoNumeroVisitas.getText().isEmpty()) {
-                    nuevoPtoReciclaje
-                            = new PuntoReciclaje(campoTextoDireccion.getText(),
-                                    Double.parseDouble(campoTextoLatitud.getText()),
-                                    Double.parseDouble(campoTextoLongitud.getText()),
-                                    categorias,
-                                    Double.parseDouble(campoTextoCantidadReciclada.getText()));
-                } else if (campoTextoCantidadReciclada.getText().isEmpty()
-                        && campoTextoNumeroVisitas.getText().isEmpty()) {
-                    nuevoPtoReciclaje
-                            = new PuntoReciclaje(campoTextoDireccion.getText(),
-                                    Double.parseDouble(campoTextoLatitud.getText()),
-                                    Double.parseDouble(campoTextoLongitud.getText()),
-                                    categorias);
+                if (!campoTextoDireccion.getText().isEmpty()
+                        && !campoTextoLatitud.getText().isEmpty()
+                        && !campoTextoLongitud.getText().isEmpty()) {
+                    if (campoTextoCantidadReciclada.getText().isEmpty()) {
+                        nuevoPtoReciclaje
+                                = new PuntoReciclaje(campoTextoDireccion.getText(),
+                                        Double.parseDouble(campoTextoLatitud.getText()),
+                                        Double.parseDouble(campoTextoLongitud.getText()),
+                                        categorias,
+                                        Integer.parseInt(campoTextoNumeroVisitas.getText()));
+                    } else if (campoTextoNumeroVisitas.getText().isEmpty()) {
+                        nuevoPtoReciclaje
+                                = new PuntoReciclaje(campoTextoDireccion.getText(),
+                                        Double.parseDouble(campoTextoLatitud.getText()),
+                                        Double.parseDouble(campoTextoLongitud.getText()),
+                                        categorias,
+                                        Double.parseDouble(campoTextoCantidadReciclada.getText()));
+                    } else if (campoTextoCantidadReciclada.getText().isEmpty()
+                            && campoTextoNumeroVisitas.getText().isEmpty()) {
+                        nuevoPtoReciclaje
+                                = new PuntoReciclaje(campoTextoDireccion.getText(),
+                                        Double.parseDouble(campoTextoLatitud.getText()),
+                                        Double.parseDouble(campoTextoLongitud.getText()),
+                                        categorias);
+                    } else {
+                        nuevoPtoReciclaje
+                                = new PuntoReciclaje(campoTextoDireccion.getText(),
+                                        Double.parseDouble(campoTextoLatitud.getText()),
+                                        Double.parseDouble(campoTextoLongitud.getText()),
+                                        categorias,
+                                        Double.parseDouble(campoTextoCantidadReciclada.getText()),
+                                        Integer.parseInt(campoTextoNumeroVisitas.getText()));
+                    }
+                    PuntoReciclaje.editarDatosPuntoReciclaje(nuevoPtoReciclaje);
                 } else {
-                    nuevoPtoReciclaje
-                            = new PuntoReciclaje(campoTextoDireccion.getText(),
-                                    Double.parseDouble(campoTextoLatitud.getText()),
-                                    Double.parseDouble(campoTextoLongitud.getText()),
-                                    categorias,
-                                    Double.parseDouble(campoTextoCantidadReciclada.getText()),
-                                    Integer.parseInt(campoTextoNumeroVisitas.getText()));
+                    campoTextoDireccion.setText("Este campo es obligatorio!!");
+                    campoTextoLatitud.setText("Este campo es obligatorio!!");
+                    campoTextoLongitud.setText("Este campo es obligatorio!!");
                 }
-
-                PuntoReciclaje.editarDatosPuntoReciclaje(nuevoPtoReciclaje);
             }
         }));
         botonEliminar.setOnMouseClicked((new EventHandler<MouseEvent>() {
