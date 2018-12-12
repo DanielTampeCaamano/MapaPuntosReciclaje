@@ -21,15 +21,7 @@
             <Rectangle2D />
          </viewport>
       </ImageView>
-      <ScrollPane prefHeight="316.0" prefViewportHeight="314.0" prefViewportWidth="600.0" prefWidth="600.0">
-         <content>
-            <TableView fx:id="vistaTabla" opacity="0.94" prefHeight="314.0" prefWidth="598.0">
-              <columns>
-                <TableColumn fx:id="tablaColumnaResultados" prefWidth="599.0" text="Resultados" />
-              </columns>
-            </TableView>
-         </content>
-      </ScrollPane>
+      <ScrollPane fx:id="ScrollPane" prefHeight="316.0" prefViewportHeight="314.0" prefViewportWidth="600.0" prefWidth="600.0" />
       <Button fx:id="botonMostrarMapa" layoutX="117.0" layoutY="320.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="120.0" text="Mostrar Mapa">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />

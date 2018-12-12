@@ -65,33 +65,43 @@ public class VentanaLoginController implements Initializable {
         botonIngresar.setOnMouseClicked((new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-//                Administrador admin = new Administrador(campoTextoNombre.getText(),
-//                        campoTextoApellido.getText(), campoTextoContrasena.getText());
-//                ArrayList<Administrador> administradores = Administrador.mostrarDatosAdministrador();
-//                administradores.forEach((Administrador adminRegistrado) -> {
-//                    if (adminRegistrado.getNombreAdministrador().equalsIgnoreCase(admin.getNombreAdministrador())
-//                            && adminRegistrado.getApellidoAdministrador().equalsIgnoreCase(admin.getApellidoAdministrador())
-//                            && adminRegistrado.getContrasena().equalsIgnoreCase(admin.getContrasena())) {
-                        try {
-                            Parent root;
-                            root = FXMLLoader.load(getClass().getResource("/fxml/MapaVentanaPrincipal2.fxml"));
-                            Stage ventana = new Stage();
-                            ventana.setScene(new Scene(root));
-                            ventana.setTitle("Mapa de Puntos de Reciclaje");
-                            ventana.setResizable(false);
-                            ventana.show();
-                            Stage ventanaActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                            ventanaActual.close();
-                        } catch (IOException ex) {
-                            Logger.getLogger(MapaVentanaPrincipalController1.class.getName()).log(Level.SEVERE, null, ex);
-                        }
+                Administrador admin = new Administrador(campoTextoNombre.getText(),
+                        campoTextoApellido.getText(), campoTextoContrasena.getText());
+                ArrayList<Administrador> administradores = Administrador.mostrarDatosAdministrador();
+                administradores.forEach((Administrador adminRegistrado) -> {
+                    if (adminRegistrado.getNombreAdministrador().equalsIgnoreCase(admin.getNombreAdministrador())
+                            || adminRegistrado.getApellidoAdministrador().equalsIgnoreCase(admin.getApellidoAdministrador())
+                            || adminRegistrado.getContrasena().equalsIgnoreCase(admin.getContrasena())) {
+                        ArchivoJson.almacenarCoincidenciaAdministrador(adminRegistrado);
                     }
-//                });
-//            }
+                }
+                );
+                Administrador coincidencia = ArchivoJson.recurperarCoincidenciaAdministrador();
+                if (coincidencia.getNombreAdministrador().equals(admin.getNombreAdministrador())
+                        &&coincidencia.getApellidoAdministrador().equals(admin.getApellidoAdministrador())
+                        &&coincidencia.getContrasena().equals(admin.getContrasena())) {
+                    try {
+                        Parent root;
+                        root = FXMLLoader.load(getClass().getResource("/fxml/MapaVentanaPrincipal2.fxml"));
+                        Stage ventana = new Stage();
+                        ventana.setScene(new Scene(root, 800, 690));
+                        ventana.setTitle("Mapa de Puntos de Reciclaje");
+                        ventana.setResizable(false);
+                        ventana.show();
+                        Stage ventanaActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        ventanaActual.close();
+                    } catch (IOException ex) {
+                        Logger.getLogger(MapaVentanaPrincipalController1.class.getName()).log(Level.SEVERE, null, ex);
+                        System.out.println("no FUnciona");
+                    }
+                }
+            }
         }));
-        botonCancelar.setOnMouseClicked((new EventHandler<MouseEvent>() {
+        botonCancelar.setOnMouseClicked(
+                (new EventHandler<MouseEvent>() {
             @Override
-            public void handle(MouseEvent event) {
+            public void handle(MouseEvent event
+            ) {
                 try {
                     Parent root;
                     root = FXMLLoader.load(getClass().getResource("/fxml/MapaVentanaPrincipal1.fxml"));

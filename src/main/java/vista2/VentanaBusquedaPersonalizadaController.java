@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -97,9 +98,10 @@ public class VentanaBusquedaPersonalizadaController implements Initializable {
                                 && !ptoAlmacenado.getCategorias().equals(criterioPuntoReciclaje.getCategorias())) {
                             ptosReciclajeAlmacenados.remove(ptoAlmacenado);
                         }
-                        PuntoReciclaje.guardarCoincidenciasPuntosReciclaje(ptosReciclajeAlmacenados);
+
                         return true;
-                    });
+                    }).collect(Collectors.toList());
+                    PuntoReciclaje.guardarCoincidenciasPuntosReciclaje(ptosReciclajeAlmacenados);
                 } catch (Exception ex) {
                     PuntoReciclaje criterioPuntoReciclaje = new PuntoReciclaje("", 0, 0, new ArrayList<>());
                     ArrayList<PuntoReciclaje> ptosReciclajeAlmacenados = PuntoReciclaje.mostrarDatosPuntosReciclaje();
@@ -110,24 +112,12 @@ public class VentanaBusquedaPersonalizadaController implements Initializable {
                                 && !ptoAlmacenado.getCategorias().equals(criterioPuntoReciclaje.getCategorias())) {
                             ptosReciclajeAlmacenados.remove(ptoAlmacenado);
                         }
-                        PuntoReciclaje.guardarCoincidenciasPuntosReciclaje(ptosReciclajeAlmacenados);
+
                         return false;
-                    });
+                    }).collect(Collectors.toList());
+                    PuntoReciclaje.guardarCoincidenciasPuntosReciclaje(ptosReciclajeAlmacenados);
                 }
-                try {
-                    Stage ventanaActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    Parent root;
-                    root = FXMLLoader.load(getClass().getResource("/fxml/VentanaResultados.fxml"));
-                    Stage ventana = new Stage();
-                    ventana.setScene(new Scene(root));
-                    ventana.setTitle("Resultados Busqueda");
-                    ventana.setResizable(false);
-                    ventana.initOwner(ventanaActual.getOwner());
-                    ventana.show();
-                    ventanaActual.close();
-                } catch (IOException ex) {
-                    Logger.getLogger(MapaVentanaPrincipalController2.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                
             }
         }));
         botonVolver.setOnMouseClicked((new EventHandler<MouseEvent>() {
@@ -137,7 +127,6 @@ public class VentanaBusquedaPersonalizadaController implements Initializable {
                 Stage antiguaVentana = (Stage) ventanaActual.getOwner();
                 antiguaVentana.show();
                 ventanaActual.close();
-
             }
         }));
     }

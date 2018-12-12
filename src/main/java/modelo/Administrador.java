@@ -103,11 +103,6 @@ public class Administrador {
         }
     }
 
-//    public String toString() {
-//        String linea;
-//        linea = this.nombreAdministrador + "," + this.apellidoAdministrador + "," + this.contrasena + "\n";
-//        return linea;
-//    }
     @Override
     public String toString() {
         return "Administrador{" + "nombreAdministrador=" + nombreAdministrador + ", apellidoAdministrador=" + apellidoAdministrador + ", contrasena=" + contrasena + '}';
