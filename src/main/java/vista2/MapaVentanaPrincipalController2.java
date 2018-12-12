@@ -7,22 +7,16 @@ package vista2;
  */
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
-import com.lynden.gmapsfx.javascript.object.Animation;
 import com.lynden.gmapsfx.javascript.object.GoogleMap;
-import com.lynden.gmapsfx.javascript.object.InfoWindow;
-import com.lynden.gmapsfx.javascript.object.InfoWindowOptions;
 import com.lynden.gmapsfx.javascript.object.LatLong;
 import com.lynden.gmapsfx.javascript.object.MapOptions;
 import com.lynden.gmapsfx.javascript.object.MapTypeIdEnum;
-import com.lynden.gmapsfx.javascript.object.Marker;
-import com.lynden.gmapsfx.javascript.object.MarkerOptions;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -38,7 +32,6 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import modelo.Categoria;
@@ -83,8 +76,6 @@ public class MapaVentanaPrincipalController2 implements Initializable, MapCompon
 
     @Override
     public void mapInitialized() {
-        //LatLong joeSmithLocation = new LatLong(-38.7320304, -72.5970569);
-
         //Set the initial properties of the map.
         MapOptions mapOptions = new MapOptions();
 
@@ -142,7 +133,6 @@ public class MapaVentanaPrincipalController2 implements Initializable, MapCompon
                     ventana.setResizable(false);
                     ventana.initOwner(ventanaActual);
                     ventana.show();
-                    //ventanaActual.hide();
                 } catch (IOException ex) {
                     Logger.getLogger(MapaVentanaPrincipalController2.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -290,18 +280,6 @@ public class MapaVentanaPrincipalController2 implements Initializable, MapCompon
                 iniciarVentana();
             }
         }));
-        //Add markers to the map
-//        MarkerOptions markerOptions1 = new MarkerOptions();
-//        markerOptions1.position(joeSmithLocation).animation(Animation.BOUNCE);
-//        Marker joeSmithMarker = new Marker(markerOptions1);
-//        map.addMarker(joeSmithMarker);
-//        InfoWindowOptions infoWindowOptions1 = new InfoWindowOptions();
-//        infoWindowOptions1.content("<h2>Plaza Anibal Pinto</h2>"
-//                + "Current Location: Safeway<br>"
-//                + "ETA: 45 minutes");
-//        InfoWindow joeSmithInfoWindow = new InfoWindow(infoWindowOptions1);
-//        joeSmithInfoWindow.open(map, joeSmithMarker);
-//        
     }
 
     public void iniciarVentana() {
@@ -347,8 +325,6 @@ public class MapaVentanaPrincipalController2 implements Initializable, MapCompon
         ScrollPane scrollPane = new ScrollPane(gridPane);
         
         Stage ventanaActual = (Stage) (menuBar.getScene().getWindow());
-        //            Parent root;
-        //            root = FXMLLoader.load(getClass().getResource("/fxml/VentanaResultados.fxml"));
         Stage ventana = new Stage();
         ventana.setScene(new Scene(scrollPane));
         ventana.setTitle("Resultados Busqueda");
