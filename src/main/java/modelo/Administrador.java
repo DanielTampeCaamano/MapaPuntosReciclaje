@@ -80,7 +80,7 @@ public class Administrador {
                 }
                 return false;
             }).distinct().collect(Collectors.toList());
-            ArchivoJson.almacenarAdministradores(listaDatosAdministradores);
+            ArchivoJson.almacenarAdministradores((ArrayList<Administrador>) listaDatosAdministradores);
         } else {
             System.out.println("No existe el archivo en la ruta indicada, verifique que no haya un error...");
         }
@@ -90,14 +90,14 @@ public class Administrador {
     public static void borrarDatosAdministrador(Administrador adminIngresado) {
         if (Archivo.existeArchivo(RUTADATOSADMINISTRADORES)) {
             ArrayList<Administrador> listaDatosAdministradores = ArchivoJson.recurperarAdministradores();
-            listaDatosAdministradores.stream().filter((Administrador admnistrador) -> {
+            ArrayList<Administrador> listaPorAlmacenar = ArchivoJson.recurperarAdministradores();
+            listaDatosAdministradores.forEach((Administrador admnistrador) -> {
                 if (admnistrador.getNombreAdministrador().equalsIgnoreCase(adminIngresado.getNombreAdministrador())
                         && admnistrador.getApellidoAdministrador().equalsIgnoreCase(adminIngresado.getApellidoAdministrador())) {
-                    listaDatosAdministradores.remove(admnistrador);
+                    listaPorAlmacenar.remove(admnistrador);
                 }
-                return false;
-            }).distinct().collect(Collectors.toList());
-            ArchivoJson.almacenarAdministradores(listaDatosAdministradores);
+            });
+            ArchivoJson.almacenarAdministradores(listaPorAlmacenar);
         } else {
             System.out.println("No existe el archivo en la ruta de destino...");
         }
