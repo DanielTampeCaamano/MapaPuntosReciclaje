@@ -3,6 +3,7 @@ package modelo;
 import datos.Archivo;
 import datos.ArchivoJson;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class PuntoReciclaje {
@@ -14,8 +15,8 @@ public class PuntoReciclaje {
     private double cantidadReciclada;
     private int cantidadVecesVisitada;
     private static String rutaDatosPuntosReciclaje = "datos/datospuntosreciclaje/puntosreciclaje.json";
-    private static final String rutaCoincidenciasPuntosReciclaje = "datos/coincienciaspuntosreciclaje/puntosreciclaje.json";
-    private static final String rutaResultadoPuntoReciclaje = "datos/resultadopuntoreciclaje/puntoreciclaje.json";
+//    private static String rutaCoincidenciasPuntosReciclaje = "datos/coincienciaspuntosreciclaje/puntosreciclaje.json";
+//    private static String rutaResultadoPuntoReciclaje = "datos/resultadopuntoreciclaje/puntoreciclaje.json";
 
     public PuntoReciclaje(String direccion, double latitud, double longitud, ArrayList<Categoria> categorias) {
         this.direccion = direccion;
@@ -137,7 +138,7 @@ public class PuntoReciclaje {
     }
 
     public static void editarDatosPuntoReciclaje(PuntoReciclaje ptoReciclaje) {
-            ArrayList<PuntoReciclaje> listaDatosPuntosReciclaje = ArchivoJson.recurperarPuntosReciclaje();
+            List<PuntoReciclaje> listaDatosPuntosReciclaje = ArchivoJson.recurperarPuntosReciclaje();
             listaDatosPuntosReciclaje.stream().filter((PuntoReciclaje puntoReciclaje) -> {
                 if (puntoReciclaje.getDireccion().equalsIgnoreCase(ptoReciclaje.getDireccion())
                         || puntoReciclaje.getLatitud() == ptoReciclaje.getLatitud()
@@ -157,21 +158,21 @@ public class PuntoReciclaje {
                 }
                 return true;
             }).distinct().collect(Collectors.toList());
-            ArchivoJson.almacenarPuntosReciclaje(listaDatosPuntosReciclaje);
+            ArchivoJson.almacenarPuntosReciclaje((ArrayList<PuntoReciclaje>) listaDatosPuntosReciclaje);
     }
 
     public static void borrarDatosPuntoReciclaje(PuntoReciclaje ptoReciclaje) {
             ArrayList<PuntoReciclaje> listaDatosPuntosReciclaje = ArchivoJson.recurperarPuntosReciclaje();
-            listaDatosPuntosReciclaje.stream().filter((PuntoReciclaje puntoReciclaje) -> {
+            ArrayList<PuntoReciclaje> listaPorAlmacenar=ArchivoJson.recurperarPuntosReciclaje();
+            listaDatosPuntosReciclaje.forEach((PuntoReciclaje puntoReciclaje) -> {
                 if (puntoReciclaje.getDireccion().equalsIgnoreCase(ptoReciclaje.getDireccion())
                         || puntoReciclaje.getLatitud() == ptoReciclaje.getLatitud()
                         && puntoReciclaje.getLongitud() == ptoReciclaje.getLongitud()
                         || puntoReciclaje.getCategorias() == ptoReciclaje.getCategorias()) {
-                    listaDatosPuntosReciclaje.remove(puntoReciclaje);
+                    listaPorAlmacenar.remove(puntoReciclaje);
                 }
-                return true;
-            }).distinct().collect(Collectors.toList());
-            ArchivoJson.almacenarPuntosReciclaje(listaDatosPuntosReciclaje);
+            });
+            ArchivoJson.almacenarPuntosReciclaje(listaPorAlmacenar);
     }
 
     @Override

@@ -194,7 +194,7 @@ public class MapaVentanaPrincipalController1 implements Initializable, MapCompon
                 }
                 PuntoReciclaje.guardarCoincidenciasPuntosReciclaje(coincidenciasPorAlmacenar);
 
-                iniciarVentana();
+                iniciarVentanaResultadosBusqueda();
             }
         }));
         menuItemMetal.setOnAction((new EventHandler<ActionEvent>() {
@@ -216,7 +216,7 @@ public class MapaVentanaPrincipalController1 implements Initializable, MapCompon
                 }
                 PuntoReciclaje.guardarCoincidenciasPuntosReciclaje(coincidenciasPorAlmacenar);
 
-                iniciarVentana();
+                iniciarVentanaResultadosBusqueda();
             }
         }));
         menuItemPapel.setOnAction((new EventHandler<ActionEvent>() {
@@ -238,7 +238,7 @@ public class MapaVentanaPrincipalController1 implements Initializable, MapCompon
                 }
                 PuntoReciclaje.guardarCoincidenciasPuntosReciclaje(coincidenciasPorAlmacenar);
 
-                iniciarVentana();
+                iniciarVentanaResultadosBusqueda();
             }
         }));
         menuItemPlastico.setOnAction((new EventHandler<ActionEvent>() {
@@ -260,7 +260,7 @@ public class MapaVentanaPrincipalController1 implements Initializable, MapCompon
                 }
                 PuntoReciclaje.guardarCoincidenciasPuntosReciclaje(coincidenciasPorAlmacenar);
 
-                iniciarVentana();
+                iniciarVentanaResultadosBusqueda();
             }
         }));
         menuItemBateriaPila.setOnAction((new EventHandler<ActionEvent>() {
@@ -281,7 +281,7 @@ public class MapaVentanaPrincipalController1 implements Initializable, MapCompon
                     }
                 }
                 PuntoReciclaje.guardarCoincidenciasPuntosReciclaje(coincidenciasPorAlmacenar);
-                iniciarVentana();
+                iniciarVentanaResultadosBusqueda();
             }
         }));
         //Add markers to the map
@@ -298,15 +298,15 @@ public class MapaVentanaPrincipalController1 implements Initializable, MapCompon
 //        
     }
 
-    public void iniciarVentana() {
+    public void iniciarVentanaResultadosBusqueda() {
         ArrayList<PuntoReciclaje> coincidenciasPtosReciclaje = PuntoReciclaje.mostrarCoincidenciasPuntosReciclaje();
         ArrayList<Button> listaBotonesResultados = new ArrayList<>();
-        
+
         coincidenciasPtosReciclaje.forEach(coincidenciaAlmacenada -> {
-            
+
             Button botonResultado = new Button(coincidenciaAlmacenada.getDireccion());
             botonResultado.setOnMouseClicked((new EventHandler<MouseEvent>() {
-                
+
                 @Override
                 public void handle(MouseEvent event) {
                     PuntoReciclaje.guardarResultadoPuntoReciclaje(coincidenciaAlmacenada);
@@ -315,13 +315,13 @@ public class MapaVentanaPrincipalController1 implements Initializable, MapCompon
                         Parent root;
                         root = FXMLLoader.load(getClass().getResource("/fxml/VentanaMapaResultados.fxml"));
                         Stage ventana = new Stage();
-                        ventana.setScene(new Scene(root));
+                        ventana.setScene(new Scene(root, 800, 680));
                         ventana.setTitle("Mapa del Resultado de Busqueda...");
                         ventana.setResizable(false);
                         ventana.initOwner(ventanaActual.getOwner());
                         ventana.show();
                         ventanaActual.hide();
-                        
+
                     } catch (IOException ex) {
                         Logger.getLogger(MapaVentanaPrincipalController2.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -329,17 +329,16 @@ public class MapaVentanaPrincipalController1 implements Initializable, MapCompon
             }));
             listaBotonesResultados.add(botonResultado);
         });
-        
         GridPane gridPane = new GridPane();
         gridPane.setPadding(new Insets(5));
         gridPane.setHgap(5);
         gridPane.setVgap(5);
-        
+
         listaBotonesResultados.forEach(boton -> {
             gridPane.add(boton, 0, listaBotonesResultados.indexOf(boton));
         });
         ScrollPane scrollPane = new ScrollPane(gridPane);
-        
+
         Stage ventanaActual = (Stage) (menuBar.getScene().getWindow());
         //            Parent root;
         //            root = FXMLLoader.load(getClass().getResource("/fxml/VentanaResultados.fxml"));

@@ -190,7 +190,7 @@ public class MapaVentanaPrincipalController2 implements Initializable, MapCompon
                 }
                 PuntoReciclaje.guardarCoincidenciasPuntosReciclaje(coincidenciasPorAlmacenar);
 
-                iniciarVentana();
+                iniciarVentanaResultadosBusqueda();
             }
         }));
         menuItemMetal.setOnAction((new EventHandler<ActionEvent>() {
@@ -212,7 +212,7 @@ public class MapaVentanaPrincipalController2 implements Initializable, MapCompon
                 }
                 PuntoReciclaje.guardarCoincidenciasPuntosReciclaje(coincidenciasPorAlmacenar);
 
-                iniciarVentana();
+                iniciarVentanaResultadosBusqueda();
             }
         }));
         menuItemPapel.setOnAction((new EventHandler<ActionEvent>() {
@@ -234,7 +234,7 @@ public class MapaVentanaPrincipalController2 implements Initializable, MapCompon
                 }
                 PuntoReciclaje.guardarCoincidenciasPuntosReciclaje(coincidenciasPorAlmacenar);
 
-                iniciarVentana();
+                iniciarVentanaResultadosBusqueda();
             }
         }));
         menuItemPlastico.setOnAction((new EventHandler<ActionEvent>() {
@@ -256,7 +256,7 @@ public class MapaVentanaPrincipalController2 implements Initializable, MapCompon
                 }
                 PuntoReciclaje.guardarCoincidenciasPuntosReciclaje(coincidenciasPorAlmacenar);
 
-                iniciarVentana();
+                iniciarVentanaResultadosBusqueda();
             }
         }));
         menuItemBateriaPila.setOnAction((new EventHandler<ActionEvent>() {
@@ -277,12 +277,12 @@ public class MapaVentanaPrincipalController2 implements Initializable, MapCompon
                     }
                 }
                 PuntoReciclaje.guardarCoincidenciasPuntosReciclaje(coincidenciasPorAlmacenar);
-                iniciarVentana();
+                iniciarVentanaResultadosBusqueda();
             }
         }));
     }
 
-    public void iniciarVentana() {
+    public void iniciarVentanaResultadosBusqueda() {
         ArrayList<PuntoReciclaje> coincidenciasPtosReciclaje = PuntoReciclaje.mostrarCoincidenciasPuntosReciclaje();
         ArrayList<Button> listaBotonesResultados = new ArrayList<>();
         
