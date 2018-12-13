@@ -153,7 +153,7 @@ public class VentanaBusquedaPersonalizadaController implements Initializable {
                         root = FXMLLoader.load(getClass().getResource("/fxml/VentanaMapaResultados.fxml"));
                         Stage ventana = new Stage();
                         ventana.setScene(new Scene(root));
-                        ventana.setTitle("Mapa del Resultado de Busqueda...");
+                        ventana.setTitle("RecyclApp - Mapa del Resultado de Busqueda...");
                         ventana.setResizable(false);
                         ventana.initOwner(ventanaActual.getOwner());
                         ventana.show();
@@ -182,7 +182,7 @@ public class VentanaBusquedaPersonalizadaController implements Initializable {
         //            root = FXMLLoader.load(getClass().getResource("/fxml/VentanaResultados.fxml"));
         Stage ventana = new Stage();
         ventana.setScene(new Scene(scrollPane));
-        ventana.setTitle("Resultados Busqueda");
+        ventana.setTitle("RecyclApp - Resultados Busqueda");
         ventana.setResizable(false);
         ventana.initOwner(ventanaActual);
         ventana.show();

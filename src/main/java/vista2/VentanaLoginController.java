@@ -92,7 +92,6 @@ public class VentanaLoginController implements Initializable {
                         ventanaActual.close();
                     } catch (IOException ex) {
                         Logger.getLogger(MapaVentanaPrincipalController1.class.getName()).log(Level.SEVERE, null, ex);
-                        System.out.println("no FUnciona");
                     }
                 }
             }
@@ -107,7 +106,7 @@ public class VentanaLoginController implements Initializable {
                     root = FXMLLoader.load(getClass().getResource("/fxml/MapaVentanaPrincipal1.fxml"));
                     Stage ventana = new Stage();
                     ventana.setScene(new Scene(root));
-                    ventana.setTitle("Mapa de Puntos de Reciclaje");
+                    ventana.setTitle("RecyclApp - Mapa de Puntos de Reciclaje");
                     ventana.setResizable(false);
                     ventana.show();
                     Stage ventanaActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
