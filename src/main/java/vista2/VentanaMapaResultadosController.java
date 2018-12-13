@@ -52,6 +52,8 @@ public class VentanaMapaResultadosController implements Initializable, MapCompon
     private GoogleMap map;
     PuntoReciclaje ptoReciclaje;
     LatLong resultadoPtoReciclaje;
+    @FXML
+    private Button botonVolver;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -100,6 +102,65 @@ public class VentanaMapaResultadosController implements Initializable, MapCompon
         );
         InfoWindow infoResultadoPtoReciclaje = new InfoWindow(infoWindowOptions1);
         infoResultadoPtoReciclaje.open(map, posResultadoPtoReciclaje);
+        botonVolver.setOnMouseClicked((new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                iniciarVentanaResultadosBusqueda();
+            }
+        }));
 
+    }
+    public void iniciarVentanaResultadosBusqueda() {
+        ArrayList<PuntoReciclaje> coincidenciasPtosReciclaje = PuntoReciclaje.mostrarCoincidenciasPuntosReciclaje();
+        ArrayList<Button> listaBotonesResultados = new ArrayList<>();
+
+        coincidenciasPtosReciclaje.forEach(coincidenciaAlmacenada -> {
+
+            Button botonResultado = new Button(coincidenciaAlmacenada.getDireccion());
+            botonResultado.setOnMouseClicked((new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent event) {
+                    PuntoReciclaje.guardarResultadoPuntoReciclaje(coincidenciaAlmacenada);
+                    try {
+                        Stage ventanaActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        Parent root;
+                        root = FXMLLoader.load(getClass().getResource("/fxml/VentanaMapaResultados.fxml"));
+                        Stage ventana = new Stage();
+                        ventana.setScene(new Scene(root));
+                        ventana.setTitle("RecyclApp - Mapa del Resultado de Busqueda...");
+                        ventana.setResizable(false);
+                        ventana.initOwner(ventanaActual.getOwner());
+                        ventana.show();
+                        ventanaActual.hide();
+
+                    } catch (IOException ex) {
+                        Logger.getLogger(MapaVentanaPrincipalController2.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }));
+            listaBotonesResultados.add(botonResultado);
+        });
+
+        GridPane gridPane = new GridPane();
+        gridPane.setPadding(new Insets(5));
+        gridPane.setHgap(5);
+        gridPane.setVgap(5);
+
+        listaBotonesResultados.forEach(boton -> {
+            gridPane.add(boton, 0, listaBotonesResultados.indexOf(boton));
+        });
+        ScrollPane scrollPane = new ScrollPane(gridPane);
+
+        Stage ventanaActual = (Stage) (botonVolver.getScene().getWindow());
+        //            Parent root;
+        //            root = FXMLLoader.load(getClass().getResource("/fxml/VentanaResultados.fxml"));
+        Stage ventana = new Stage();
+        ventana.setScene(new Scene(scrollPane));
+        ventana.setTitle("RecyclApp - Resultados Busqueda");
+        ventana.setResizable(false);
+        ventana.initOwner(ventanaActual);
+        ventana.show();
+        ventanaActual.close();
     }
 }

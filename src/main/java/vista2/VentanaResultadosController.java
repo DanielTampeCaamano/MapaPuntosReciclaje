@@ -66,7 +66,7 @@ public class VentanaResultadosController implements Initializable {
                     root = FXMLLoader.load(getClass().getResource("/fxml/VentanaMapaResultados.fxml"));
                     Stage ventana = new Stage();
                     ventana.setScene(new Scene(root));
-                    ventana.setTitle("Resultados Busqueda");
+                    ventana.setTitle("RecyclApp - Resultados Busqueda");
                     ventana.setResizable(false);
                     ventana.initOwner(ventanaActual.getOwner());
                     ventana.show();

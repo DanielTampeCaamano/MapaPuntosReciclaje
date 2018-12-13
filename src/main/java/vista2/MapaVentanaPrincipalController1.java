@@ -103,7 +103,7 @@ public class MapaVentanaPrincipalController1 implements Initializable, MapCompon
                     root = FXMLLoader.load(getClass().getResource("/fxml/VentanaLogin.fxml"));
                     Stage ventana = new Stage();
                     ventana.setScene(new Scene(root));
-                    ventana.setTitle("Login");
+                    ventana.setTitle("RecyclApp - Login");
                     ventana.setResizable(false);
                     ventana.show();
                     Stage ventanaActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -132,7 +132,7 @@ public class MapaVentanaPrincipalController1 implements Initializable, MapCompon
                     root = FXMLLoader.load(getClass().getResource("/fxml/VentanaBusquedaPersonalizada.fxml"));
                     Stage ventana = new Stage();
                     ventana.setScene(new Scene(root));
-                    ventana.setTitle("Busqueda Personalizada");
+                    ventana.setTitle("RecyclApp - Busqueda Personalizada");
                     ventana.setResizable(false);
                     ventana.initOwner(ventanaActual);
                     ventana.show();
@@ -151,7 +151,7 @@ public class MapaVentanaPrincipalController1 implements Initializable, MapCompon
                     root = FXMLLoader.load(getClass().getResource("/fxml/VentanaEditarAdministradores.fxml"));
                     Stage ventana = new Stage();
                     ventana.setScene(new Scene(root));
-                    ventana.setTitle("Editar Administradores...");
+                    ventana.setTitle("RecyclApp - Editar Administradores...");
                     ventana.setResizable(false);
                     ventana.show();
                 } catch (IOException ex) {
@@ -167,7 +167,7 @@ public class MapaVentanaPrincipalController1 implements Initializable, MapCompon
                     root = FXMLLoader.load(getClass().getResource("/fxml/VentanaEditarPuntosReciclaje.fxml"));
                     Stage ventana = new Stage();
                     ventana.setScene(new Scene(root));
-                    ventana.setTitle("Editar Puntos de Riciclaje...");
+                    ventana.setTitle("RecyclApp - Editar Puntos de Riciclaje...");
                     ventana.setResizable(false);
                     ventana.show();
                 } catch (IOException ex) {
@@ -316,7 +316,7 @@ public class MapaVentanaPrincipalController1 implements Initializable, MapCompon
                         root = FXMLLoader.load(getClass().getResource("/fxml/VentanaMapaResultados.fxml"));
                         Stage ventana = new Stage();
                         ventana.setScene(new Scene(root, 800, 680));
-                        ventana.setTitle("Mapa del Resultado de Busqueda...");
+                        ventana.setTitle("RecyclApp - Mapa del Resultado de Busqueda...");
                         ventana.setResizable(false);
                         ventana.initOwner(ventanaActual.getOwner());
                         ventana.show();
@@ -344,7 +344,7 @@ public class MapaVentanaPrincipalController1 implements Initializable, MapCompon
         //            root = FXMLLoader.load(getClass().getResource("/fxml/VentanaResultados.fxml"));
         Stage ventana = new Stage();
         ventana.setScene(new Scene(scrollPane));
-        ventana.setTitle("Resultados Busqueda");
+        ventana.setTitle("RecyclApp - Resultados Busqueda");
         ventana.setResizable(false);
         ventana.initOwner(ventanaActual);
         ventana.show();

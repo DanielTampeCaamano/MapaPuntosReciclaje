@@ -34,5 +34,6 @@
               AnchorPane.leftAnchor="26.0" 
               AnchorPane.topAnchor="88.0">
         </VBox-->
+        <Button id="botonvolver" fx:id="botonVolver" layoutX="293.0" layoutY="636.0" mnemonicParsing="false" opacity="0.93" prefHeight="40.0" prefWidth="167.0" text="Volver" visible="true" />
     </children>
 </AnchorPane>

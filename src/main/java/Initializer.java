@@ -51,7 +51,7 @@ public class Initializer extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/MapaVentanaPrincipal1.fxml"));
 
-        stage.setTitle("Maps Test");
+        stage.setTitle("RecyclApp Temuco - VentanaPrincipal");
         stage.setScene(new Scene(root, 800, 690));
         stage.setResizable(false);
         stage.show();
