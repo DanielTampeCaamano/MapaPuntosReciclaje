@@ -343,7 +343,7 @@ public class MapaVentanaPrincipalController1 implements Initializable, MapCompon
         //            Parent root;
         //            root = FXMLLoader.load(getClass().getResource("/fxml/VentanaResultados.fxml"));
         Stage ventana = new Stage();
-        ventana.setScene(new Scene(scrollPane));
+        ventana.setScene(new Scene(scrollPane,200,200));
         ventana.setTitle("RecyclApp - Resultados Busqueda");
         ventana.setResizable(false);
         ventana.initOwner(ventanaActual);

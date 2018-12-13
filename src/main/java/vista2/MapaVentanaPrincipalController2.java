@@ -326,7 +326,7 @@ public class MapaVentanaPrincipalController2 implements Initializable, MapCompon
         
         Stage ventanaActual = (Stage) (menuBar.getScene().getWindow());
         Stage ventana = new Stage();
-        ventana.setScene(new Scene(scrollPane));
+        ventana.setScene(new Scene(scrollPane,200,200));
         ventana.setTitle("RecyclApp - Resultados Busqueda");
         ventana.setResizable(false);
         ventana.initOwner(ventanaActual);
